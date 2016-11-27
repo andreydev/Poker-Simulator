@@ -34,7 +34,7 @@
 using namespace std;
 
 const int numberOfCards = 5;
-const int maxRandom = 52;
+const int maxRandom = 51;
 
 long long gameCounter = 0;
 

@@ -33,7 +33,7 @@ vector<Card> Generator::rollTable(int maxRandom, int numberOfCards){
         
     rollAgain:
         
-        int roll = rand() % maxRandom + 1;
+        int roll = rand() % maxRandom;
         
         for (int j = 0; j < rollsResult.size(); j++) {
             
