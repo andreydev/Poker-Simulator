@@ -81,6 +81,7 @@ void displayResult(){
         cout << "[?] RoyalFlushes ->"<< royalflush << " ->" << royalflush/static_cast<float>(tmpGameCounter) * 100 << "%" << endl << endl;
         
         while(!done){
+            usleep(25);
             continue;
         }
         
