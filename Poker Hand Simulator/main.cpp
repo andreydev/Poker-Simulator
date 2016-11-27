@@ -26,6 +26,7 @@
 #include <thread>
 #include <vector>
 #include <unistd.h>
+#include <iomanip>
 
 #include "data.hpp"
 #include "gamemech.hpp"
@@ -35,6 +36,7 @@ using namespace std;
 
 const int numberOfCards = 5;
 const int maxRandom = 51;
+const int precPoint = 5;
 
 long long gameCounter = 0;
 
@@ -82,16 +84,16 @@ void displayResult(){
         int royalflush = game.vectorSearch(tmpScore, Combo::RoyalFlush, myScore);
         
         cout << "[?] Game #"<< gameCounter << " Done" << endl;
-        cout << "[?] Nothing ->"<< nothing << " ->" << nothing/static_cast<float>(tmpGameCounter) * 100 << "%" << endl;
-        cout << "[?] Pairs ->"<< pairs << " ->" << pairs/static_cast<float>(tmpGameCounter) * 100 << "%" <<endl;
-        cout << "[?] TwoPairs ->"<< twopairs << " ->" << twopairs/static_cast<float>(tmpGameCounter) * 100 << "%" << endl;
-        cout << "[?] ThreeKinds ->"<< three << " ->" << three/static_cast<float>(tmpGameCounter) * 100 << "%" << endl;
-        cout << "[?] Straights ->"<< straight << " ->" << straight/static_cast<float>(tmpGameCounter) * 100 << "%" << endl;
-        cout << "[?] Flushes ->"<< flush << " ->" << flush/static_cast<float>(tmpGameCounter) * 100 << "%" << endl;
-        cout << "[?] Fulls ->"<< full << " ->" << full/static_cast<float>(tmpGameCounter) * 100<< "%" << endl;
-        cout << "[?] FourKinds ->"<< fourkinds << " ->" << fourkinds/static_cast<float>(tmpGameCounter) * 100 << "%" << endl;
-        cout << "[?] StraightFlushes ->"<< straightflush << " ->" << straightflush/static_cast<float>(tmpGameCounter) * 100 << "%" << endl;
-        cout << "[?] RoyalFlushes ->"<< royalflush << " ->" << royalflush/static_cast<float>(tmpGameCounter) * 100 << "%" << endl << endl;
+        cout << "[?] Nothing ->"<< nothing << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << nothing/static_cast<double>(tmpGameCounter) * 100 << "%" << endl;
+        cout << "[?] Pairs ->"<< pairs << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << pairs/static_cast<double>(tmpGameCounter) * 100 << "%" <<endl;
+        cout << "[?] TwoPairs ->"<< twopairs << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << twopairs/static_cast<double>(tmpGameCounter) * 100 << "%" << endl;
+        cout << "[?] ThreeKinds ->"<< three << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << three/static_cast<double>(tmpGameCounter) * 100 << "%" << endl;
+        cout << "[?] Straights ->"<< straight << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << straight/static_cast<double>(tmpGameCounter) * 100 << "%" << endl;
+        cout << "[?] Flushes ->"<< flush << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << flush/static_cast<double>(tmpGameCounter) * 100 << "%" << endl;
+        cout << "[?] Fulls ->"<< full << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << full/static_cast<double>(tmpGameCounter) * 100<< "%" << endl;
+        cout << "[?] FourKinds ->"<< fourkinds << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << fourkinds/static_cast<double>(tmpGameCounter) * 100 << "%" << endl;
+        cout << "[?] StraightFlushes ->"<< straightflush << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << straightflush/static_cast<double>(tmpGameCounter) * 100 << "%" << endl;
+        cout << "[?] RoyalFlushes ->"<< royalflush << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << royalflush/static_cast<double>(tmpGameCounter) * 100 << "%" << endl << endl;
         
         while(!done){
             usleep(25);
