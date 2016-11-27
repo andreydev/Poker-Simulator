@@ -28,6 +28,8 @@ long long gameCounter = 0;
 void play();
 void displayResult();
 
+bool done = false;
+
 Score myScore;
 Generator generator;
 GameMech game;
@@ -78,6 +80,10 @@ void displayResult(){
         cout << "[?] StraightFlushes ->"<< straightflush << " ->" << straightflush/static_cast<float>(tmpGameCounter) * 100 << "%" << endl;
         cout << "[?] RoyalFlushes ->"<< royalflush << " ->" << royalflush/static_cast<float>(tmpGameCounter) * 100 << "%" << endl << endl;
         
+        while(!done){
+            continue;
+        }
+        
         game.clearGameResults();
     }
 }
@@ -87,6 +93,8 @@ void play(){
         
         usleep(100);
         
+        done = false;
+        
         gameCounter += 1;
         
         resultCards.clear();
@@ -94,5 +102,7 @@ void play(){
         resultCards = generator.rollTable(maxRandom, numberOfCards);
         
         game.verifyResult(resultCards);
+        
+        done = true;
     }
 }
