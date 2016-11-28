@@ -34,11 +34,9 @@
 
 using namespace std;
 
-const int numberOfCards = 5;
-const int maxRandom = 51;
-const int precPoint = 5;
-
-long long gameCounter = 0;
+const short numberOfCards = 5;
+const short maxRandom = 51;
+const short precPoint = 5;
 
 void play();
 void displayResult();
@@ -108,8 +106,7 @@ void displayResult() {
 		cout << "[?] RoyalFlushes ->" << royalflush << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << royalFlushPrc << "%" << endl << endl;
 
 		while (!done) {
-			Sleep(0.025f);
-			continue;
+			Sleep(0.01);
 		}
 
 		game.clearGameResults();
@@ -119,10 +116,8 @@ void displayResult() {
 void play() {
 	while (true) {
 
-		Sleep(0.1f);
-		
 		done = false;
-
+		
 		resultCards.clear();
 
 		resultCards = generator.rollTable(maxRandom, numberOfCards);
@@ -130,5 +125,7 @@ void play() {
 		game.verifyResult(resultCards);
 
 		done = true;
+
+		Sleep(0.1);
 	}
 }

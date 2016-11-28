@@ -31,17 +31,17 @@ struct Card {
 };
 
 struct Score {
-	int nothing = 0;
-	int pair = 0;
-	int twopair = 0;
-	int three = 0;
-	int straight = 0;
-	int flush = 0;
-	int full = 0;
-	int four = 0;
-	int straightflush = 0;
-	int royal = 0;
-	int getTotal() {
+	unsigned int nothing = 0;
+	unsigned int pair = 0;
+	unsigned int twopair = 0;
+	unsigned int three = 0;
+	unsigned int straight = 0;
+	unsigned int flush = 0;
+	unsigned int full = 0;
+	unsigned int four = 0;
+	unsigned int straightflush = 0;
+	unsigned int royal = 0;
+	unsigned long getTotal() {
 		return nothing + pair + twopair + three + straight + flush + full + four + straightflush + royal;
 	}
 };
