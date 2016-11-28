@@ -34,12 +34,10 @@ vector<Combo> GameMech::getGameResults(){
 
 void GameMech::verifyResult(vector<Card> cardResults){
     
-    size_t length = cardResults.size();
-    
     vector<int> colors;
     vector<int> cards;
     
-    for (int i = 0; i < length; i++) {
+    for (int i = 0; i < cardResults.size(); i++) {
         colors.push_back(cardResults.at(i).suit);
         cards.push_back(cardResults.at(i).num);
     }

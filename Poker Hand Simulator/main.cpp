@@ -71,7 +71,7 @@ void displayResult(){
         
         vector<Combo> tmpScore = game.getGameResults();
         long long tmpGameCounter = gameCounter;
-        
+     
         int nothing = game.vectorSearch(tmpScore, Combo::Nothing, myScore);
         int pairs = game.vectorSearch(tmpScore, Combo::Pair, myScore);
         int twopairs = game.vectorSearch(tmpScore, Combo::TwoPairs, myScore);
@@ -83,17 +83,30 @@ void displayResult(){
         int straightflush = game.vectorSearch(tmpScore, Combo::StraightFlush, myScore);
         int royalflush = game.vectorSearch(tmpScore, Combo::RoyalFlush, myScore);
         
-        cout << "[?] Game #"<< gameCounter << " Done" << endl;
-        cout << "[?] Nothing ->"<< nothing << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << nothing/static_cast<double>(tmpGameCounter) * 100 << "%" << endl;
-        cout << "[?] Pairs ->"<< pairs << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << pairs/static_cast<double>(tmpGameCounter) * 100 << "%" <<endl;
-        cout << "[?] TwoPairs ->"<< twopairs << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << twopairs/static_cast<double>(tmpGameCounter) * 100 << "%" << endl;
-        cout << "[?] ThreeKinds ->"<< three << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << three/static_cast<double>(tmpGameCounter) * 100 << "%" << endl;
-        cout << "[?] Straights ->"<< straight << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << straight/static_cast<double>(tmpGameCounter) * 100 << "%" << endl;
-        cout << "[?] Flushes ->"<< flush << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << flush/static_cast<double>(tmpGameCounter) * 100 << "%" << endl;
-        cout << "[?] Fulls ->"<< full << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << full/static_cast<double>(tmpGameCounter) * 100<< "%" << endl;
-        cout << "[?] FourKinds ->"<< fourkinds << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << fourkinds/static_cast<double>(tmpGameCounter) * 100 << "%" << endl;
-        cout << "[?] StraightFlushes ->"<< straightflush << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << straightflush/static_cast<double>(tmpGameCounter) * 100 << "%" << endl;
-        cout << "[?] RoyalFlushes ->"<< royalflush << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << royalflush/static_cast<double>(tmpGameCounter) * 100 << "%" << endl << endl;
+        double nothingPrc = nothing/static_cast<double>(tmpGameCounter) * 100;
+        double pairsPrc = pairs/static_cast<double>(tmpGameCounter) * 100;
+        double twoPairPrc = twopairs/static_cast<double>(tmpGameCounter) * 100;
+        double threePrc = three/static_cast<double>(tmpGameCounter) * 100;
+        double straightPrc = straight/static_cast<double>(tmpGameCounter) * 100;
+        double flushPrc = flush/static_cast<double>(tmpGameCounter) * 100;
+        double fullPrc = full/static_cast<double>(tmpGameCounter) * 100;
+        double fourKindsPrc = fourkinds/static_cast<double>(tmpGameCounter) * 100;
+        double straightFlushPrc = straightflush/static_cast<double>(tmpGameCounter) * 100;
+        double royalFlushPrc = royalflush/static_cast<double>(tmpGameCounter) * 100;
+        
+        int total = nothingPrc + pairsPrc + twoPairPrc + threePrc + straightPrc + flushPrc + fullPrc + fourKindsPrc + straightPrc + royalFlushPrc;
+        
+        cout << "[?] Game #"<< gameCounter << " Done \t->" << total << "%" << endl;
+        cout << "[?] Nothing ->"<< nothing << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << nothingPrc << "%" << endl;
+        cout << "[?] Pairs ->"<< pairs << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << pairsPrc << "%" <<endl;
+        cout << "[?] TwoPairs ->"<< twopairs << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << twoPairPrc << "%" << endl;
+        cout << "[?] ThreeKinds ->"<< three << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << threePrc << "%" << endl;
+        cout << "[?] Straights ->"<< straight << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << straightPrc << "%" << endl;
+        cout << "[?] Flushes ->"<< flush << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << flushPrc << "%" << endl;
+        cout << "[?] Fulls ->"<< full << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << fullPrc << "%" << endl;
+        cout << "[?] FourKinds ->"<< fourkinds << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << fourKindsPrc << "%" << endl;
+        cout << "[?] StraightFlushes ->"<< straightflush << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << straightFlushPrc << "%" << endl;
+        cout << "[?] RoyalFlushes ->"<< royalflush << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << royalFlushPrc << "%" << endl << endl;
         
         while(!done){
             usleep(25);
