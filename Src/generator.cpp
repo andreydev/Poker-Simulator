@@ -58,8 +58,8 @@ void Generator::createDeck() {
 
 	Card card;
 
-	for (int suit = 0; suit < 4; suit++) {
-		for (int num = 0; num < 13; num++) {
+	for (char suit = 0; suit < 4; suit++) {
+		for (char num = 0; num < 13; num++) {
 
 			card = { suit };
 			card.num = num;

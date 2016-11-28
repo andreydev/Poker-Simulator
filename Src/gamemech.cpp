@@ -88,12 +88,11 @@ void GameMech::verifyResult(vector<Card> cardResults) {
 
 int GameMech::vectorSearch(Combo target, Score& myScore) {
 
-	int counter = 0;
+	unsigned int counter = 0;
 
-	auto results = _gameResults;
-
-	for (auto& i : results) {
-		if (i == target) {
+	for (unsigned int i = 0; i < _gameResults.size(); i++)
+	{
+		if (_gameResults[i] == target) {
 			counter++;
 		}
 	}

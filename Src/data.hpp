@@ -26,22 +26,22 @@
 #define data_hpp
 
 struct Card {
-	int suit;
-	int num;
+	char suit;
+	char num;
 };
 
 struct Score {
-	unsigned int nothing = 0;
-	unsigned int pair = 0;
-	unsigned int twopair = 0;
-	unsigned int three = 0;
-	unsigned int straight = 0;
-	unsigned int flush = 0;
-	unsigned int full = 0;
-	unsigned int four = 0;
-	unsigned int straightflush = 0;
-	unsigned int royal = 0;
-	unsigned long getTotal() {
+	unsigned long nothing = 0;
+	unsigned long pair = 0;
+	unsigned long twopair = 0;
+	unsigned long three = 0;
+	unsigned long straight = 0;
+	unsigned long flush = 0;
+	unsigned long full = 0;
+	unsigned long four = 0;
+	unsigned long straightflush = 0;
+	unsigned long royal = 0;
+	unsigned long long getTotal() {
 		return nothing + pair + twopair + three + straight + flush + full + four + straightflush + royal;
 	}
 };

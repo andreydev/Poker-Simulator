@@ -69,47 +69,59 @@ void displayResult() {
 
 		system("CLS");
 
-		int nothing = game.vectorSearch(Combo::Nothing, myScore);
-		int pairs = game.vectorSearch(Combo::Pair, myScore);
-		int twopairs = game.vectorSearch(Combo::TwoPairs, myScore);
-		int three = game.vectorSearch(Combo::ThreeKind, myScore);
-		int straight = game.vectorSearch(Combo::Straight, myScore);
-		int flush = game.vectorSearch(Combo::Flush, myScore);
-		int full = game.vectorSearch(Combo::Full, myScore);
-		int fourkinds = game.vectorSearch(Combo::FourKind, myScore);
-		int straightflush = game.vectorSearch(Combo::StraightFlush, myScore);
-		int royalflush = game.vectorSearch(Combo::RoyalFlush, myScore);
+		try {
 
-		double nothingPrc = nothing / static_cast<double>(myScore.getTotal()) * 100;
-		double pairsPrc = pairs / static_cast<double>(myScore.getTotal()) * 100;
-		double twoPairPrc = twopairs / static_cast<double>(myScore.getTotal()) * 100;
-		double threePrc = three / static_cast<double>(myScore.getTotal()) * 100;
-		double straightPrc = straight / static_cast<double>(myScore.getTotal()) * 100;
-		double flushPrc = flush / static_cast<double>(myScore.getTotal()) * 100;
-		double fullPrc = full / static_cast<double>(myScore.getTotal()) * 100;
-		double fourKindsPrc = fourkinds / static_cast<double>(myScore.getTotal()) * 100;
-		double straightFlushPrc = straightflush / static_cast<double>(myScore.getTotal()) * 100;
-		double royalFlushPrc = royalflush / static_cast<double>(myScore.getTotal()) * 100;
+			unsigned int nothing = game.vectorSearch(Combo::Nothing, myScore);
+			unsigned int pairs = game.vectorSearch(Combo::Pair, myScore);
+			unsigned int twopairs = game.vectorSearch(Combo::TwoPairs, myScore);
+			unsigned int three = game.vectorSearch(Combo::ThreeKind, myScore);
+			unsigned int straight = game.vectorSearch(Combo::Straight, myScore);
+			unsigned int flush = game.vectorSearch(Combo::Flush, myScore);
+			unsigned int full = game.vectorSearch(Combo::Full, myScore);
+			unsigned int fourkinds = game.vectorSearch(Combo::FourKind, myScore);
+			unsigned int straightflush = game.vectorSearch(Combo::StraightFlush, myScore);
+			unsigned int royalflush = game.vectorSearch(Combo::RoyalFlush, myScore);
 
-		float total = nothingPrc + pairsPrc + twoPairPrc + threePrc + straightPrc + flushPrc + fullPrc + fourKindsPrc + straightFlushPrc + royalFlushPrc;
+			double nothingPrc = nothing / static_cast<double>(myScore.getTotal()) * 100;
+			double pairsPrc = pairs / static_cast<double>(myScore.getTotal()) * 100;
+			double twoPairPrc = twopairs / static_cast<double>(myScore.getTotal()) * 100;
+			double threePrc = three / static_cast<double>(myScore.getTotal()) * 100;
+			double straightPrc = straight / static_cast<double>(myScore.getTotal()) * 100;
+			double flushPrc = flush / static_cast<double>(myScore.getTotal()) * 100;
+			double fullPrc = full / static_cast<double>(myScore.getTotal()) * 100;
+			double fourKindsPrc = fourkinds / static_cast<double>(myScore.getTotal()) * 100;
+			double straightFlushPrc = straightflush / static_cast<double>(myScore.getTotal()) * 100;
+			double royalFlushPrc = royalflush / static_cast<double>(myScore.getTotal()) * 100;
 
-		cout << "[?] Game #" << myScore.getTotal() << " Done \t->" << setiosflags(ios::fixed) << setprecision(0) << total << "%" << endl;
-		cout << "[?] Nothing ->" << nothing << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << nothingPrc << "%" << endl;
-		cout << "[?] Pairs ->" << pairs << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << pairsPrc << "%" << endl;
-		cout << "[?] TwoPairs ->" << twopairs << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << twoPairPrc << "%" << endl;
-		cout << "[?] ThreeKinds ->" << three << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << threePrc << "%" << endl;
-		cout << "[?] Straights ->" << straight << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << straightPrc << "%" << endl;
-		cout << "[?] Flushes ->" << flush << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << flushPrc << "%" << endl;
-		cout << "[?] Fulls ->" << full << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << fullPrc << "%" << endl;
-		cout << "[?] FourKinds ->" << fourkinds << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << fourKindsPrc << "%" << endl;
-		cout << "[?] StraightFlushes ->" << straightflush << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << straightFlushPrc << "%" << endl;
-		cout << "[?] RoyalFlushes ->" << royalflush << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << royalFlushPrc << "%" << endl << endl;
+			float total = nothingPrc + pairsPrc + twoPairPrc + threePrc + straightPrc + flushPrc + fullPrc + fourKindsPrc + straightFlushPrc + royalFlushPrc;
 
-		while (!done) {
-			Sleep(0.01);
+			cout << "[?] Game #" << myScore.getTotal() << " Done ->" << setiosflags(ios::fixed) << setprecision(0) << total << "%" << endl;
+			cout << "[?] Nothing ->" << nothing << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << nothingPrc << "%" << endl;
+			cout << "[?] Pairs ->" << pairs << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << pairsPrc << "%" << endl;
+			cout << "[?] TwoPairs ->" << twopairs << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << twoPairPrc << "%" << endl;
+			cout << "[?] ThreeKinds ->" << three << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << threePrc << "%" << endl;
+			cout << "[?] Straights ->" << straight << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << straightPrc << "%" << endl;
+			cout << "[?] Flushes ->" << flush << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << flushPrc << "%" << endl;
+			cout << "[?] Fulls ->" << full << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << fullPrc << "%" << endl;
+			cout << "[?] FourKinds ->" << fourkinds << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << fourKindsPrc << "%" << endl;
+			cout << "[?] StraightFlushes ->" << straightflush << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << straightFlushPrc << "%" << endl;
+			cout << "[?] RoyalFlushes ->" << royalflush << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << royalFlushPrc << "%" << endl << endl;
+
+			while (!done) {
+				Sleep(0.01);
+			}
+
+			game.clearGameResults();
 		}
-
-		game.clearGameResults();
+		catch (const std::overflow_error& e) {
+			cout << e.what();
+		}
+		catch (const std::runtime_error& e) {
+			cout << e.what();
+		}
+		catch (const std::exception& e) {
+			cout << e.what();
+		}
 	}
 }
 
@@ -117,14 +129,26 @@ void play() {
 	while (true) {
 
 		done = false;
-		
-		resultCards.clear();
 
-		resultCards = generator.rollTable(maxRandom, numberOfCards);
+		try {
+			resultCards.clear();
 
-		game.verifyResult(resultCards);
+			resultCards = generator.rollTable(maxRandom, numberOfCards);
 
-		done = true;
+			game.verifyResult(resultCards);
+
+			done = true;
+
+		}
+		catch (const std::overflow_error& e) {
+			cout << e.what();
+		}
+		catch (const std::runtime_error& e) {
+			cout << e.what();
+		}
+		catch (const std::exception& e) {
+			cout << e.what();
+		}
 
 		Sleep(0.1);
 	}
