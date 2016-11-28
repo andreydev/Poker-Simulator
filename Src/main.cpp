@@ -108,7 +108,7 @@ void displayResult() {
 		cout << "[?] RoyalFlushes ->" << royalflush << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << royalFlushPrc << "%" << endl << endl;
 
 		while (!done) {
-			Sleep(0.0001f);
+			Sleep(0.000025f);
 			continue;
 		}
 
@@ -121,7 +121,7 @@ void play() {
 
 		done = false;
 
-		Sleep(0.001f);
+		Sleep(0.0001f);
 
 		resultCards.clear();
 
