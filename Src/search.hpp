@@ -26,6 +26,7 @@
 #define search_hpp
 
 #include <vector>
+#include <algorithm>
 
 #include "data.hpp"
 
