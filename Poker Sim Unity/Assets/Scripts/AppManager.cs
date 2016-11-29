@@ -50,14 +50,6 @@ public class AppManager : MonoBehaviour
     [DllImport("Lib", EntryPoint = "getResults")]
     public static extern void GetResults(byte[] buf);
 
-    void Awake()
-    {
-        foreach (var item in allTexts)
-        {
-            rememberState.Add(item.text);
-        }
-    }
-
     public void StartWork()
     {
         GenDeck();
@@ -80,15 +72,38 @@ public class AppManager : MonoBehaviour
         }
     }
 
-    IEnumerator DisplayResults()
+    private void Awake()
+    {
+        foreach (var item in allTexts)
+        {
+            rememberState.Add(item.text);
+        }
+    }
+
+    private void ParseResults(string results)
+    {
+        string delim = ";";
+        char[] delimChar = delim.ToCharArray();
+
+        string[] parsedResults = results.Split(delimChar[0]);
+
+        for (int i = 0; i < allTexts.Length; i++)
+        {
+            allTexts[i].text = rememberState[i].Substring(0, rememberState[i].Length - 1) + parsedResults[i];
+            allTexts[i].text += " -> " + (float.Parse(parsedResults[i]) / float.Parse(parsedResults[parsedResults.Length - 1]) * 100).ToString("n4") + "%";
+        }
+    }
+
+    private IEnumerator DisplayResults()
     {
         byte[] buf = new byte[300];
 
         while (true)
         {
             GetResults(buf);
-            Debug.Log(System.Text.Encoding.ASCII.GetString(buf));
-            yield return new WaitForSeconds(1);
+            //Debug.Log(System.Text.Encoding.ASCII.GetString(buf));
+            ParseResults(System.Text.Encoding.ASCII.GetString(buf));
+            yield return new WaitForSeconds(0.00025f);
         }
     }
 }
