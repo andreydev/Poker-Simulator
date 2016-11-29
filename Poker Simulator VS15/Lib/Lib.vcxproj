@@ -18,6 +18,18 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Src\gamemech.cpp" />
+    <ClCompile Include="..\..\Src\generator.cpp" />
+    <ClCompile Include="..\..\Src\libmain.cpp" />
+    <ClCompile Include="..\..\Src\search.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Src\data.hpp" />
+    <ClInclude Include="..\..\Src\gamemech.hpp" />
+    <ClInclude Include="..\..\Src\generator.hpp" />
+    <ClInclude Include="..\..\Src\search.hpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D6298569-54CB-4BD6-8EE8-A1A6C4F9555D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -145,18 +157,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\LibSrc\data.hpp" />
-    <ClInclude Include="..\..\LibSrc\gamemech.hpp" />
-    <ClInclude Include="..\..\LibSrc\generator.hpp" />
-    <ClInclude Include="..\..\LibSrc\search.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\LibSrc\gamemech.cpp" />
-    <ClCompile Include="..\..\LibSrc\generator.cpp" />
-    <ClCompile Include="..\..\LibSrc\main.cpp" />
-    <ClCompile Include="..\..\LibSrc\search.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

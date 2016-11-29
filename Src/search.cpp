@@ -82,7 +82,7 @@ bool Search::findStraight(vector<int> cards) {
 	vector<int> uniqueHolder;
 
 	for (int i = 0; i < cards.size(); i++) {
-		if (std::find(uniqueHolder.begin(), uniqueHolder.end(), cards[i]) != uniqueHolder.end()) {
+		if (find(uniqueHolder.begin(), uniqueHolder.end(), cards[i]) != uniqueHolder.end()) {
 			continue;
 		}
 		else {
@@ -222,7 +222,7 @@ bool Search::findStraightFlush(vector<int> cards, vector<int> colors) {
 		vector<int> uniqueHolder;
 
 		for (int i = 0; i < cards.size(); i++) {
-			if (std::find(uniqueHolder.begin(), uniqueHolder.end(), spadesCards[i]) != uniqueHolder.end()) {
+			if (find(uniqueHolder.begin(), uniqueHolder.end(), spadesCards[i]) != uniqueHolder.end()) {
 				continue;
 			}
 			else {
@@ -246,7 +246,7 @@ bool Search::findStraightFlush(vector<int> cards, vector<int> colors) {
 		vector<int> uniqueHolder;
 
 		for (int i = 0; i < cards.size(); i++) {
-			if (std::find(uniqueHolder.begin(), uniqueHolder.end(), heartsCards[i]) != uniqueHolder.end()) {
+			if (find(uniqueHolder.begin(), uniqueHolder.end(), heartsCards[i]) != uniqueHolder.end()) {
 				continue;
 			}
 			else {
@@ -270,7 +270,7 @@ bool Search::findStraightFlush(vector<int> cards, vector<int> colors) {
 		vector<int> uniqueHolder;
 
 		for (int i = 0; i < cards.size(); i++) {
-			if (std::find(uniqueHolder.begin(), uniqueHolder.end(), diamsCards[i]) != uniqueHolder.end()) {
+			if (find(uniqueHolder.begin(), uniqueHolder.end(), diamsCards[i]) != uniqueHolder.end()) {
 				continue;
 			}
 			else {
@@ -294,7 +294,7 @@ bool Search::findStraightFlush(vector<int> cards, vector<int> colors) {
 		vector<int> uniqueHolder;
 
 		for (int i = 0; i < cards.size(); i++) {
-			if (std::find(uniqueHolder.begin(), uniqueHolder.end(), clubCards[i]) != uniqueHolder.end()) {
+			if (find(uniqueHolder.begin(), uniqueHolder.end(), clubCards[i]) != uniqueHolder.end()) {
 				continue;
 			}
 			else {
@@ -363,7 +363,7 @@ bool Search::findRoyalFlush(vector<int> cards, vector<int> colors) {
 		vector<int> uniqueHolder;
 
 		for (int i = 0; i < cards.size(); i++) {
-			if (std::find(uniqueHolder.begin(), uniqueHolder.end(), spadesCards[i]) != uniqueHolder.end()) {
+			if (find(uniqueHolder.begin(), uniqueHolder.end(), spadesCards[i]) != uniqueHolder.end()) {
 				continue;
 			}
 			else {
@@ -386,7 +386,7 @@ bool Search::findRoyalFlush(vector<int> cards, vector<int> colors) {
 		vector<int> uniqueHolder;
 
 		for (int i = 0; i < cards.size(); i++) {
-			if (std::find(uniqueHolder.begin(), uniqueHolder.end(), heartsCards[i]) != uniqueHolder.end()) {
+			if (find(uniqueHolder.begin(), uniqueHolder.end(), heartsCards[i]) != uniqueHolder.end()) {
 				continue;
 			}
 			else {
@@ -409,7 +409,7 @@ bool Search::findRoyalFlush(vector<int> cards, vector<int> colors) {
 		vector<int> uniqueHolder;
 
 		for (int i = 0; i < cards.size(); i++) {
-			if (std::find(uniqueHolder.begin(), uniqueHolder.end(), diamsCards[i]) != uniqueHolder.end()) {
+			if (find(uniqueHolder.begin(), uniqueHolder.end(), diamsCards[i]) != uniqueHolder.end()) {
 				continue;
 			}
 			else {
@@ -432,7 +432,7 @@ bool Search::findRoyalFlush(vector<int> cards, vector<int> colors) {
 		vector<int> uniqueHolder;
 
 		for (int i = 0; i < cards.size(); i++) {
-			if (std::find(uniqueHolder.begin(), uniqueHolder.end(), clubCards[i]) != uniqueHolder.end()) {
+			if (find(uniqueHolder.begin(), uniqueHolder.end(), clubCards[i]) != uniqueHolder.end()) {
 				continue;
 			}
 			else {

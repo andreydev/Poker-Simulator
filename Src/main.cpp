@@ -82,16 +82,16 @@ void displayResult() {
 			unsigned int straightflush = game.vectorSearch(Combo::StraightFlush, myScore);
 			unsigned int royalflush = game.vectorSearch(Combo::RoyalFlush, myScore);
 
-			double nothingPrc = nothing / static_cast<double>(myScore.getTotal()) * 100;
-			double pairsPrc = pairs / static_cast<double>(myScore.getTotal()) * 100;
-			double twoPairPrc = twopairs / static_cast<double>(myScore.getTotal()) * 100;
-			double threePrc = three / static_cast<double>(myScore.getTotal()) * 100;
-			double straightPrc = straight / static_cast<double>(myScore.getTotal()) * 100;
-			double flushPrc = flush / static_cast<double>(myScore.getTotal()) * 100;
-			double fullPrc = full / static_cast<double>(myScore.getTotal()) * 100;
-			double fourKindsPrc = fourkinds / static_cast<double>(myScore.getTotal()) * 100;
-			double straightFlushPrc = straightflush / static_cast<double>(myScore.getTotal()) * 100;
-			double royalFlushPrc = royalflush / static_cast<double>(myScore.getTotal()) * 100;
+			float nothingPrc = nothing / static_cast<float>(myScore.getTotal()) * 100;
+			float pairsPrc = pairs / static_cast<float>(myScore.getTotal()) * 100;
+			float twoPairPrc = twopairs / static_cast<float>(myScore.getTotal()) * 100;
+			float threePrc = three / static_cast<float>(myScore.getTotal()) * 100;
+			float straightPrc = straight / static_cast<float>(myScore.getTotal()) * 100;
+			float flushPrc = flush / static_cast<float>(myScore.getTotal()) * 100;
+			float fullPrc = full / static_cast<float>(myScore.getTotal()) * 100;
+			float fourKindsPrc = fourkinds / static_cast<float>(myScore.getTotal()) * 100;
+			float straightFlushPrc = straightflush / static_cast<float>(myScore.getTotal()) * 100;
+			float royalFlushPrc = royalflush / static_cast<float>(myScore.getTotal()) * 100;
 
 			float total = nothingPrc + pairsPrc + twoPairPrc + threePrc + straightPrc + flushPrc + fullPrc + fourKindsPrc + straightFlushPrc + royalFlushPrc;
 

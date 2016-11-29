@@ -88,7 +88,7 @@ public class AppManager : MonoBehaviour
             GetResults(buf);
             //Debug.Log(System.Text.Encoding.ASCII.GetString(buf));
             ParseResults(System.Text.Encoding.ASCII.GetString(buf));
-            yield return new WaitForSeconds(0.00025f);
+            yield return null;
         }
     }
 }

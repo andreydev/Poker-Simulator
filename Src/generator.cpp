@@ -35,11 +35,8 @@ vector<Card> Generator::rollTable(int maxRandom, int numberOfCards) {
 
 		int roll = rand() % maxRandom;
 
-		for (int j = 0; j < rollsResult.size(); j++) {
-
-			if (roll == rollsResult.at(j)) {
-				goto rollAgain;
-			}
+		if (find(begin(rollsResult), end(rollsResult), roll) != end(rollsResult)) {
+			goto rollAgain;
 		}
 
 		rollsResult.push_back(roll);

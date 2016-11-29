@@ -37,7 +37,7 @@ class Generator
 private:
 	vector<Card> deck;
 	vector<int> rollsResult;
-	vector<Card> playerCards = {};
+	vector<Card> playerCards;
 
 public:
 

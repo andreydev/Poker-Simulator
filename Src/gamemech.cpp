@@ -25,11 +25,11 @@
 #include "gamemech.hpp"
 
 void GameMech::clearGameResults() {
-	_gameResults.clear();
+	gameResults.clear();
 }
 
 vector<Combo> GameMech::getGameResults() {
-	return _gameResults;
+	return gameResults;
 }
 
 void GameMech::verifyResult(vector<Card> cardResults) {
@@ -46,43 +46,43 @@ void GameMech::verifyResult(vector<Card> cardResults) {
 	sort(begin(cards), end(cards));
 
 	if (search.findRoyalFlush(cards, colors)) {
-		_gameResults.push_back(Combo::RoyalFlush);
+		gameResults.push_back(Combo::RoyalFlush);
 	}
 
 	else if (search.findStraightFlush(cards, colors)) {
-		_gameResults.push_back(Combo::StraightFlush);
+		gameResults.push_back(Combo::StraightFlush);
 	}
 
 	else if (search.findFourKind(cards)) {
-		_gameResults.push_back(Combo::FourKind);
+		gameResults.push_back(Combo::FourKind);
 	}
 
 	else if (search.findFull(cards)) {
-		_gameResults.push_back(Combo::Full);
+		gameResults.push_back(Combo::Full);
 	}
 
 	else if (search.findFlush(colors)) {
-		_gameResults.push_back(Combo::Flush);
+		gameResults.push_back(Combo::Flush);
 	}
 
 	else if (search.findStraight(cards)) {
-		_gameResults.push_back(Combo::Straight);
+		gameResults.push_back(Combo::Straight);
 	}
 
 	else if (search.findThree(cards)) {
-		_gameResults.push_back(Combo::ThreeKind);
+		gameResults.push_back(Combo::ThreeKind);
 	}
 
 	else if (search.findTwoPair(cards)) {
-		_gameResults.push_back(Combo::TwoPairs);
+		gameResults.push_back(Combo::TwoPairs);
 	}
 
 	else if (search.findPair(cards)) {
-		_gameResults.push_back(Combo::Pair);
+		gameResults.push_back(Combo::Pair);
 	}
 
 	else {
-		_gameResults.push_back(Combo::Nothing);
+		gameResults.push_back(Combo::Nothing);
 	}
 }
 
@@ -90,12 +90,7 @@ int GameMech::vectorSearch(Combo target, Score& myScore) {
 
 	unsigned int counter = 0;
 
-	for (unsigned int i = 0; i < _gameResults.size(); i++)
-	{
-		if (_gameResults[i] == target) {
-			counter++;
-		}
-	}
+	counter = count(begin(gameResults), end(gameResults), target);
 
 	switch (target) {
 	case Combo::Nothing:

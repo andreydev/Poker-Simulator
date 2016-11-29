@@ -35,7 +35,7 @@ using namespace std;
 class GameMech
 {
 private:
-	vector<Combo> _gameResults = {};
+	vector<Combo> gameResults;
 	Search search;
 
 public:
