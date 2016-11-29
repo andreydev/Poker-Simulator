@@ -48,12 +48,24 @@ struct Score {
 	unsigned long long getTotal() {
 		return nothing + pair + twopair + three + straight + flush + full + four + straightflush + royal;
 	}
-	string returnString(){
+	string returnString() {
 		return to_string(nothing) + ";" + to_string(pair)
 			+ ";" + to_string(twopair) + ";" + to_string(three)
 			+ ";" + to_string(straight) + ";" + to_string(flush)
 			+ ";" + to_string(full) + ";" + to_string(four)
 			+ ";" + to_string(straightflush) + ";" + to_string(royal) + ";" + to_string(getTotal());
+	}
+	void clear() {
+		nothing = 0;
+		pair = 0;
+		twopair = 0;
+		three = 0;
+		straight = 0;
+		flush = 0;
+		full = 0;
+		four = 0;
+		straightflush = 0;
+		royal = 0;
 	}
 };
 
