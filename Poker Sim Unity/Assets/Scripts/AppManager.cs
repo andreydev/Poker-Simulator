@@ -29,7 +29,7 @@ public class AppManager : MonoBehaviour
     [DllImport("Lib", EntryPoint = "gendeck")]
     public static extern void GenDeck();
     [DllImport("Lib", EntryPoint = "getResults")]
-    public static extern void getResults(byte[] buf);
+    public static extern void GetResults(byte[] buf);
 
     void Awake()
     {
@@ -67,7 +67,7 @@ public class AppManager : MonoBehaviour
 
         while (true)
         {
-            getResults(buf);
+            GetResults(buf);
             Debug.Log(System.Text.Encoding.ASCII.GetString(buf));
             yield return new WaitForSeconds(1);
         }
