@@ -28,19 +28,6 @@ public class AppManager : MonoBehaviour
 {
 
     [Header("Result text reference")]
-    public Text nothing;
-    public Text pair;
-    public Text twopair;
-    public Text three;
-    public Text straight;
-    public Text flush;
-    public Text full;
-    public Text four;
-    public Text straightFlush;
-    public Text royal;
-    public Text total;
-
-    [Header("All result text reference")]
     public Text[] allTexts;
     [HideInInspector]
     public List<string> rememberState;
@@ -82,10 +69,8 @@ public class AppManager : MonoBehaviour
 
     private void ParseResults(string results)
     {
-        string delim = ";";
-        char[] delimChar = delim.ToCharArray();
-
-        string[] parsedResults = results.Split(delimChar[0]);
+        char delim = System.Convert.ToChar(";");
+        string[] parsedResults = results.Split(delim);
 
         for (int i = 0; i < allTexts.Length; i++)
         {
