@@ -38,7 +38,6 @@ using namespace std;
 
 const short numberOfCards = 5;
 const short maxRandom = 51;
-const short precPoint = 5;
 
 Score myScore;
 Generator generator;
@@ -76,9 +75,5 @@ extern "C" __declspec(dllexport)  void  __cdecl gendeck() {
 
 	myScore.clear();
 	generator.createDeck();
-}
-
-int main() {
-
 }
 
