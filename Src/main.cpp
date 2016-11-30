@@ -22,10 +22,15 @@
  SOFTWARE.
  */
 
+#ifdef __APPLE__ || __linux__
+#include <unistd.h>
+#elif _WIN32
+#include <windows.h>
+#endif
+
 #include <iostream>
 #include <thread>
 #include <vector>
-#include <windows.h>
 #include <iomanip>
 
 #include "data.hpp"

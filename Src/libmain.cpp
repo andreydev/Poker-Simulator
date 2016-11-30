@@ -24,10 +24,12 @@ SOFTWARE.
 
 #define _CRT_SECURE_NO_WARNINGS 1 
 
-#include <thread>
-#include <vector>
+#ifdef __APPLE__ || __linux__
+#include <unistd.h>
+#elif _WIN32
 #include <windows.h>
-#include <iomanip>
+#endif
+
 #include <string>
 
 #include "data.hpp"
