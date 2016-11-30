@@ -24,6 +24,8 @@ SOFTWARE.
 
 #ifdef __linux__
 #include <unistd.h>
+#elif __APPLE__
+#include <unistd.h>
 #elif _WIN32
 #include <windows.h>
 #endif
@@ -54,32 +56,33 @@ GameMech game;
 
 vector<Card> resultCards;
 
-void crosssleep(int time) {
+void crossSleep(int time) {
 #ifdef __linux__
+	usleep(time * 1000);
+#elif __APPLE__
 	usleep(time * 1000);
 #elif _WIN32
 	Sleep(time);
 #endif
 }
 
-void crossclear() {
-
+void crossClear() {
 #ifdef __linux__
+	system("clear");
+#elif __APPLE__
 	system("clear");
 #elif _WIN32
 	system("CLS");
 #endif
-
 }
 
 int main() {
-
 	generator.createDeck();
 
 	thread t(displayResult);
 	t.detach();
 
-	cout << "[^] Started with " << numberOfCards << " cards!" << endl << endl;
+	cout << "[^] Started with " << numberOfCards << " cards!" << endl;
 
 	play();
 
@@ -88,10 +91,11 @@ int main() {
 
 void displayResult() {
 	while (true) {
-		crosssleep(1000);
+		crossSleep(1000);
+
+		crossClear();
 
 		try {
-
 			unsigned int nothing = game.vectorSearch(Combo::Nothing, myScore);
 			unsigned int pairs = game.vectorSearch(Combo::Pair, myScore);
 			unsigned int twopairs = game.vectorSearch(Combo::TwoPairs, myScore);
@@ -126,10 +130,10 @@ void displayResult() {
 			cout << "[?] Fulls ->" << full << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << fullPrc << "%" << endl;
 			cout << "[?] FourKinds ->" << fourkinds << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << fourKindsPrc << "%" << endl;
 			cout << "[?] StraightFlushes ->" << straightflush << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << straightFlushPrc << "%" << endl;
-			cout << "[?] RoyalFlushes ->" << royalflush << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << royalFlushPrc << "%" << endl << endl;
+			cout << "[?] RoyalFlushes ->" << royalflush << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << royalFlushPrc << "%" << endl;
 
 			while (!done) {
-				crosssleep(0.01);
+				crossSleep(0.01);
 			}
 
 			game.clearGameResults();
@@ -148,7 +152,6 @@ void displayResult() {
 
 void play() {
 	while (true) {
-
 		done = false;
 
 		try {
@@ -171,6 +174,6 @@ void play() {
 			cout << e.what();
 		}
 
-		crosssleep(0.1);
+		crossSleep(0.1);
 	}
 }
