@@ -26,6 +26,7 @@
 #define generator_hpp
 
 #include <random>
+#include <algorithm>
 #include <time.h>
 
 #include "data.hpp"
