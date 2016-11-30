@@ -56,7 +56,7 @@ GameMech game;
 
 vector<Card> resultCards;
 
-void crossSleep(int time) {
+void crossSleep(float time) {
 #ifdef __linux__
 	usleep(time * 1000);
 #elif __APPLE__

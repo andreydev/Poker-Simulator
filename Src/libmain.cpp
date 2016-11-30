@@ -67,7 +67,7 @@ extern "C" __declspec(dllexport)  void  __cdecl getResults(char* buf) {
 	strcpy(buf, result.c_str());
 }
 
-extern "C" __declspec(dllexport)  void  __cdecl gendeck() {
+extern "C" __declspec(dllexport)  void  __cdecl genDeck() {
 
 	myScore.clear();
 	generator.createDeck();

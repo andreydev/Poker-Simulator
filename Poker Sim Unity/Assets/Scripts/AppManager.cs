@@ -32,7 +32,7 @@ public class AppManager : MonoBehaviour
     [HideInInspector]
     public List<string> rememberState;
 
-    [DllImport("Lib", EntryPoint = "gendeck")]
+    [DllImport("Lib", EntryPoint = "genDeck")]
     public static extern void GenDeck();
     [DllImport("Lib", EntryPoint = "getResults")]
     public static extern void GetResults(byte[] buf);
