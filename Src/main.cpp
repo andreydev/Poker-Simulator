@@ -1,28 +1,28 @@
 /*
- MIT License
+MIT License
 
- Copyright (c) 2016 Andrey Lopukhov
+Copyright (c) 2016 Andrey Lopukhov
 
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
- The above copyright notice and this permission notice shall be included in all
- copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- SOFTWARE.
- */
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
 
-#ifdef __APPLE__ || __linux__
+#ifdef __linux__
 #include <unistd.h>
 #elif _WIN32
 #include <windows.h>
@@ -54,6 +54,24 @@ GameMech game;
 
 vector<Card> resultCards;
 
+void crosssleep(int time) {
+#ifdef __linux__
+	usleep(time * 1000);
+#elif _WIN32
+	Sleep(time);
+#endif
+}
+
+void crossclear() {
+
+#ifdef __linux__
+	system("clear");
+#elif _WIN32
+	system("CLS");
+#endif
+
+}
+
 int main() {
 
 	generator.createDeck();
@@ -70,9 +88,7 @@ int main() {
 
 void displayResult() {
 	while (true) {
-		Sleep(1000);
-
-		system("CLS");
+		crosssleep(1000);
 
 		try {
 
@@ -113,7 +129,7 @@ void displayResult() {
 			cout << "[?] RoyalFlushes ->" << royalflush << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << royalFlushPrc << "%" << endl << endl;
 
 			while (!done) {
-				Sleep(0.01);
+				crosssleep(0.01);
 			}
 
 			game.clearGameResults();
@@ -155,6 +171,6 @@ void play() {
 			cout << e.what();
 		}
 
-		Sleep(0.1);
+		crosssleep(0.1);
 	}
 }
