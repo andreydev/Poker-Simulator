@@ -42,7 +42,7 @@ SOFTWARE.
 using namespace std;
 
 const short numberOfCards = 5;
-const short maxRandom = 51;
+const short maxRandom = 52;
 const short precPoint = 5;
 
 void play();
@@ -122,15 +122,15 @@ void displayResult() {
 
 			cout << "[?] Game #" << myScore.getTotal() << " Done ->" << setiosflags(ios::fixed) << setprecision(0) << total << "%" << endl;
 			cout << "[?] Nothing ->" << nothing << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << nothingPrc << "%" << endl;
-			cout << "[?] Pairs ->" << pairs << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << pairsPrc << "%" << endl;
-			cout << "[?] TwoPairs ->" << twopairs << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << twoPairPrc << "%" << endl;
-			cout << "[?] ThreeKinds ->" << three << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << threePrc << "%" << endl;
-			cout << "[?] Straights ->" << straight << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << straightPrc << "%" << endl;
-			cout << "[?] Flushes ->" << flush << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << flushPrc << "%" << endl;
-			cout << "[?] Fulls ->" << full << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << fullPrc << "%" << endl;
-			cout << "[?] FourKinds ->" << fourkinds << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << fourKindsPrc << "%" << endl;
-			cout << "[?] StraightFlushes ->" << straightflush << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << straightFlushPrc << "%" << endl;
-			cout << "[?] RoyalFlushes ->" << royalflush << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << royalFlushPrc << "%" << endl;
+			cout << "[?] Pairs ->" << pairs << " ->" << pairsPrc << "%" << endl;
+			cout << "[?] TwoPairs ->" << twopairs << " ->"  << twoPairPrc << "%" << endl;
+			cout << "[?] ThreeKinds ->" << three << " ->" << threePrc << "%" << endl;
+			cout << "[?] Straights ->" << straight << " ->" << straightPrc << "%" << endl;
+			cout << "[?] Flushes ->" << flush << " ->" << flushPrc << "%" << endl;
+			cout << "[?] Fulls ->" << full << " ->" << fullPrc << "%" << endl;
+			cout << "[?] FourKinds ->" << fourkinds << " ->" << fourKindsPrc << "%" << endl;
+			cout << "[?] StraightFlushes ->" << straightflush << " ->" << straightFlushPrc << "%" << endl;
+			cout << "[?] RoyalFlushes ->" << royalflush << " ->" << royalFlushPrc << "%" << endl;
 
 			while (!done) {
 				crossSleep(0.01);
