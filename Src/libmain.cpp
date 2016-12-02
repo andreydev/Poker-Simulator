@@ -33,7 +33,7 @@ SOFTWARE.
 using namespace std;
 
 const short numberOfCards = 5;
-const short maxRandom = 51;
+const short maxRandom = 52;
 
 Score myScore;
 Generator generator;
