@@ -25,9 +25,24 @@ SOFTWARE.
 #ifndef data_hpp
 #define data_hpp
 
-#include <string> 
+#include <string>
+#include <vector>
 
 using namespace std;
+
+struct Colors{
+	int spades = 0;
+	int hearts = 0;
+	int diams = 0;
+	int club = 0;
+};
+
+struct ColorCards{
+	vector<int> spadesCards;
+	vector<int> heartsCards;
+	vector<int> diamsCards;
+	vector<int> clubCards;
+};
 
 struct Card {
 	char suit;
