@@ -35,14 +35,10 @@ using namespace std;
 
 class GameMech
 {
-	vector<Combo> gameResults;
 	Search search;
 
 public:
-	void clearGameResults();
-	vector<Combo> getGameResults();
-	void verifyResult(vector<Card>);
-	void vectorSearch(Score& myScore);
+	void verifyResult(vector<Card> cardResults, Score& score);
 };
 
 #endif

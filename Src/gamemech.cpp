@@ -24,16 +24,7 @@
 
 #include "gamemech.hpp"
 
-void GameMech::clearGameResults() {
-	gameResults.clear();
-}
-
-vector<Combo> GameMech::getGameResults() {
-	return gameResults;
-}
-
-// Checking for combinations and saving to gameresults vector
-void GameMech::verifyResult(vector<Card> cardResults) {
+void GameMech::verifyResult(vector<Card> cardResults, Score& score) {
 
 	vector<int> colors;
 	vector<int> cards;
@@ -47,88 +38,43 @@ void GameMech::verifyResult(vector<Card> cardResults) {
 	sort(begin(cards), end(cards));
 
 	if (search.findRoyalFlush(cards, colors)) {
-		gameResults.push_back(Combo::RoyalFlush);
+		score.royal += 1;
 	}
 
 	else if (search.findStraightFlush(cards, colors)) {
-		gameResults.push_back(Combo::StraightFlush);
+		score.straightflush += 1;
 	}
 
 	else if (search.findFourKind(cards)) {
-		gameResults.push_back(Combo::FourKind);
+		score.four += 1;
 	}
 
 	else if (search.findFull(cards)) {
-		gameResults.push_back(Combo::Full);
+		score.full += 1;
 	}
 
 	else if (search.findFlush(colors)) {
-		gameResults.push_back(Combo::Flush);
+		score.flush += 1;
 	}
 
 	else if (search.findStraight(cards)) {
-		gameResults.push_back(Combo::Straight);
+		score.straight += 1;
 	}
 
 	else if (search.findThree(cards)) {
-		gameResults.push_back(Combo::ThreeKind);
+		score.three += 1;
 	}
 
 	else if (search.findTwoPair(cards)) {
-		gameResults.push_back(Combo::TwoPairs);
+		score.twopair += 1;
 	}
 
 	else if (search.findPair(cards)) {
-		gameResults.push_back(Combo::Pair);
+		score.pair += 1;
 	}
 
 	else {
-		gameResults.push_back(Combo::Nothing);
+		score.nothing += 1;
 	}
 }
 
-// Parsing gameresults and adding to score
-void GameMech::vectorSearch(Score& myScore) {
-
-	map <Combo, int> results;
-
-	for (auto i = 0; i < gameResults.size(); i++)
-	{
-		results[gameResults[i]]++;
-	}
-
-	for (auto item : results) {
-		switch (item.first) {
-		case Combo::Nothing:
-			myScore.nothing += item.second;
-			break;
-		case Combo::Pair:
-			myScore.pair += item.second;
-			break;
-		case Combo::TwoPairs:
-			myScore.twopair += item.second;
-			break;
-		case Combo::ThreeKind:
-			myScore.three += item.second;
-			break;
-		case Combo::Straight:
-			myScore.straight += item.second;
-			break;
-		case Combo::Flush:
-			myScore.flush += item.second;
-			break;
-		case Combo::Full:
-			myScore.full += item.second;
-			break;
-		case Combo::FourKind:
-			myScore.four += item.second;
-			break;
-		case Combo::StraightFlush:
-			myScore.straightflush += item.second;
-			break;
-		case Combo::RoyalFlush:
-			myScore.royal += item.second;
-			break;
-		}
-	}
-}

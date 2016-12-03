@@ -99,8 +99,6 @@ void displayResult() {
 
 		crossClear();
 
-		game.vectorSearch(myScore);
-
 		auto tmpScore = myScore;
 
 		auto nothingPrc = tmpScore.nothing / static_cast<float>(tmpScore.getTotal()) * 100;
@@ -131,8 +129,6 @@ void displayResult() {
 		while (!done) {
 			crossSleep(0.01f);
 		}
-
-		game.clearGameResults();
 	}
 }
 
@@ -146,7 +142,7 @@ void play() {
 
 		resultCards = generator.rollTable(maxRandom, numberOfCards);
 
-		game.verifyResult(resultCards);
+		game.verifyResult(resultCards, myScore);
 
 		done = true;
 

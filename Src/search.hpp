@@ -34,7 +34,7 @@ using namespace std;
 
 class Search
 {
-	bool straigthFlushVerifier(vector<int> cards);
+	bool straightFlushVerifier(vector<int> cards);
 	void royalFlushVerifier(int royal[5], int& resultCounter, vector<int> cards);
 	void colorCounter(vector<int> cards, vector<int> colors, Colors& colorsFound, ColorCards& cardsFound);
 	int royal[5] = { 8,9,10,11,12 };

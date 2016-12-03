@@ -87,9 +87,8 @@ bool Search::findStraight(vector<int> cards) {
 		if (find(uniqueHolder.begin(), uniqueHolder.end(), cards[i]) != uniqueHolder.end()) {
 			continue;
 		}
-		else {
-			uniqueHolder.push_back(cards[i]);
-		}
+
+		uniqueHolder.push_back(cards[i]);
 	}
 
 	for (int i = 0; i < uniqueHolder.size(); i++) {
@@ -135,8 +134,8 @@ bool Search::findFlush(vector<int> colors) {
 
 	if (spades >= 5 || hearts >= 5 || diams >= 5 || club >= 5)
 		return true;
-	else
-		return false;
+	
+	return false;
 }
 
 // TESTED
@@ -166,8 +165,8 @@ bool Search::findFull(vector<int> cards) {
 
 	if (pairFound && threeFound)
 		return true;
-	else
-		return false;
+	
+	return false;
 }
 
 // TESTED
@@ -180,6 +179,7 @@ bool Search::findFourKind(vector<int> cards) {
 			return true;
 		}
 	}
+
 	return false;
 }
 
@@ -192,22 +192,22 @@ bool Search::findStraightFlush(vector<int> cards, vector<int> colors) {
 	colorCounter(cards, colors, colorsFound, cardsFound);
 
 	if (colorsFound.spades >= 5) {
-		if (straigthFlushVerifier(cardsFound.spadesCards)) {
+		if (straightFlushVerifier(cardsFound.spadesCards)) {
 			return true;
 		}
 	}
 	else if (colorsFound.hearts >= 5) {
-		if (straigthFlushVerifier(cardsFound.heartsCards)) {
+		if (straightFlushVerifier(cardsFound.heartsCards)) {
 			return true;
 		}
 	}
 	else if (colorsFound.diams >= 5) {
-		if (straigthFlushVerifier(cardsFound.diamsCards)) {
+		if (straightFlushVerifier(cardsFound.diamsCards)) {
 			return true;
 		}
 	}
 	else if (colorsFound.club >= 5) {
-		if (straigthFlushVerifier(cardsFound.clubCards)) {
+		if (straightFlushVerifier(cardsFound.clubCards)) {
 			return true;
 		}
 	}
@@ -240,11 +240,11 @@ bool Search::findRoyalFlush(vector<int> cards, vector<int> colors) {
 
 	if (resultCounter >= 5)
 		return true;
-	else
-		return false;
+	
+	return false;
 }
 
-bool Search::straigthFlushVerifier(vector<int> cards) {
+bool Search::straightFlushVerifier(vector<int> cards) {
 
 	vector<int> uniqueHolder;
 
@@ -252,9 +252,8 @@ bool Search::straigthFlushVerifier(vector<int> cards) {
 		if (find(begin(uniqueHolder), end(uniqueHolder), item) != end(uniqueHolder)) {
 			continue;
 		}
-		else {
-			uniqueHolder.push_back(item);
-		}
+
+		uniqueHolder.push_back(item);
 	}
 
 	for (auto i = 0; i < uniqueHolder.size(); i++) {
@@ -278,9 +277,8 @@ void Search::royalFlushVerifier(int royal[5], int& resultCounter, vector<int> ca
 		if (find(begin(uniqueHolder), end(uniqueHolder), item) != end(uniqueHolder)) {
 			continue;
 		}
-		else {
-			uniqueHolder.push_back(item);
-		}
+
+		uniqueHolder.push_back(item);
 	}
 
 	for (auto i = 0; i < 5; i++) {

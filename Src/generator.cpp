@@ -29,7 +29,7 @@ vector<Card> Generator::rollTable(int maxRandom, int numberOfCards) {
 	playerCards.clear();
 	rollsResult.clear();
 
-	for (int i = 0; i < numberOfCards; i++) {
+	for (auto i = 0; i < numberOfCards; i++) {
 
 	rollAgain:
 
@@ -42,7 +42,7 @@ vector<Card> Generator::rollTable(int maxRandom, int numberOfCards) {
 		rollsResult.push_back(roll);
 	}
 
-	for (int i = 0; i < numberOfCards; i++) {
+	for (auto i = 0; i < numberOfCards; i++) {
 		playerCards.push_back(deck[rollsResult.at(i)]);
 	}
 

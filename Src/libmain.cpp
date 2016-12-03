@@ -43,13 +43,11 @@ vector<Card> resultCards;
 
 extern "C" __declspec(dllexport)  void  __cdecl getResults(char* buf) {
 
-	game.clearGameResults();
 	resultCards.clear();
 
 	resultCards = generator.rollTable(maxRandom, numberOfCards);
 
-	game.verifyResult(resultCards);
-	game.vectorSearch(myScore);
+	game.verifyResult(resultCards, myScore);
 
 	auto result = myScore.returnString();
 
