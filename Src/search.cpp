@@ -218,103 +218,46 @@ bool Search::findStraightFlush(vector<int> cards, vector<int> colors) {
 	}
 
 	if (spades >= 5) {
-
-		vector<int> uniqueHolder;
-
-		for (int i = 0; i < cards.size(); i++) {
-			if (find(uniqueHolder.begin(), uniqueHolder.end(), spadesCards[i]) != uniqueHolder.end()) {
-				continue;
-			}
-			else {
-				uniqueHolder.push_back(cards[i]);
-			}
-		}
-
-		for (int i = 0; i < uniqueHolder.size(); i++) {
-			if (i >= 4 &&
-				uniqueHolder[i] == uniqueHolder[i - 1] + 1 &&
-				uniqueHolder[i] == uniqueHolder[i - 2] + 2 &&
-				uniqueHolder[i] == uniqueHolder[i - 3] + 3 &&
-				uniqueHolder[i] == uniqueHolder[i - 4] + 4) {
-				return true;
-			}
-		}
-
+		if (straigthFlushVerifier(cards, spadesCards))
+			return true;
 	}
 	else if (hearts >= 5) {
-
-		vector<int> uniqueHolder;
-
-		for (int i = 0; i < cards.size(); i++) {
-			if (find(uniqueHolder.begin(), uniqueHolder.end(), heartsCards[i]) != uniqueHolder.end()) {
-				continue;
-			}
-			else {
-				uniqueHolder.push_back(cards[i]);
-			}
-		}
-
-		for (int i = 0; i < uniqueHolder.size(); i++) {
-			if (i >= 4 &&
-				uniqueHolder[i] == uniqueHolder[i - 1] + 1 &&
-				uniqueHolder[i] == uniqueHolder[i - 2] + 2 &&
-				uniqueHolder[i] == uniqueHolder[i - 3] + 3 &&
-				uniqueHolder[i] == uniqueHolder[i - 4] + 4) {
-				return true;
-			}
-		}
-
+		if (straigthFlushVerifier(cards, heartsCards))
+			return true;
 	}
 	else if (diams >= 5) {
-
-		vector<int> uniqueHolder;
-
-		for (int i = 0; i < cards.size(); i++) {
-			if (find(uniqueHolder.begin(), uniqueHolder.end(), diamsCards[i]) != uniqueHolder.end()) {
-				continue;
-			}
-			else {
-				uniqueHolder.push_back(cards[i]);
-			}
-		}
-
-		for (int i = 0; i < uniqueHolder.size(); i++) {
-			if (i >= 4 &&
-				uniqueHolder[i] == uniqueHolder[i - 1] + 1 &&
-				uniqueHolder[i] == uniqueHolder[i - 2] + 2 &&
-				uniqueHolder[i] == uniqueHolder[i - 3] + 3 &&
-				uniqueHolder[i] == uniqueHolder[i - 4] + 4) {
-				return true;
-			}
-		}
-
+		if (straigthFlushVerifier(cards, diamsCards))
+			return true;
 	}
 	else if (club >= 5) {
-
-		vector<int> uniqueHolder;
-
-		for (int i = 0; i < cards.size(); i++) {
-			if (find(uniqueHolder.begin(), uniqueHolder.end(), clubCards[i]) != uniqueHolder.end()) {
-				continue;
-			}
-			else {
-				uniqueHolder.push_back(cards[i]);
-			}
-		}
-
-		for (int i = 0; i < uniqueHolder.size(); i++) {
-			if (i >= 4 &&
-				uniqueHolder[i] == uniqueHolder[i - 1] + 1 &&
-				uniqueHolder[i] == uniqueHolder[i - 2] + 2 &&
-				uniqueHolder[i] == uniqueHolder[i - 3] + 3 &&
-				uniqueHolder[i] == uniqueHolder[i - 4] + 4) {
-				return true;
-			}
-		}
-
+		if (straigthFlushVerifier(cards, clubCards))
+			return true;
 	}
 
 	return false;
+}
+
+bool Search::straigthFlushVerifier(vector<int> cards, vector<int> colorCards) {
+	vector<int> uniqueHolder;
+
+	for (int i = 0; i < cards.size(); i++) {
+		if (find(uniqueHolder.begin(), uniqueHolder.end(), colorCards[i]) != uniqueHolder.end()) {
+			continue;
+		}
+		else {
+			uniqueHolder.push_back(cards[i]);
+		}
+	}
+
+	for (int i = 0; i < uniqueHolder.size(); i++) {
+		if (i >= 4 &&
+			uniqueHolder[i] == uniqueHolder[i - 1] + 1 &&
+			uniqueHolder[i] == uniqueHolder[i - 2] + 2 &&
+			uniqueHolder[i] == uniqueHolder[i - 3] + 3 &&
+			uniqueHolder[i] == uniqueHolder[i - 4] + 4) {
+			return true;
+		}
+	}
 }
 
 // TESTED
@@ -359,100 +302,42 @@ bool Search::findRoyalFlush(vector<int> cards, vector<int> colors) {
 	}
 
 	if (spades >= 5) {
-
-		vector<int> uniqueHolder;
-
-		for (int i = 0; i < cards.size(); i++) {
-			if (find(uniqueHolder.begin(), uniqueHolder.end(), spadesCards[i]) != uniqueHolder.end()) {
-				continue;
-			}
-			else {
-				uniqueHolder.push_back(cards[i]);
-			}
-		}
-
-		for (int i = 0; i < 5; i++) {
-			for (int j = 0; j < uniqueHolder.size(); j++) {
-				if (royal[i] == uniqueHolder[j]) {
-					resultCounter += 1;
-					break;
-				}
-			}
-		}
-
+		royalFlushVerifier(royal, resultCounter, cards, spadesCards);
 	}
 	else if (hearts >= 5) {
-
-		vector<int> uniqueHolder;
-
-		for (int i = 0; i < cards.size(); i++) {
-			if (find(uniqueHolder.begin(), uniqueHolder.end(), heartsCards[i]) != uniqueHolder.end()) {
-				continue;
-			}
-			else {
-				uniqueHolder.push_back(cards[i]);
-			}
-		}
-
-		for (int i = 0; i < 5; i++) {
-			for (int j = 0; j < uniqueHolder.size(); j++) {
-				if (royal[i] == uniqueHolder[j]) {
-					resultCounter += 1;
-					break;
-				}
-			}
-		}
-
+		royalFlushVerifier(royal, resultCounter, cards, heartsCards);
 	}
 	else if (diams >= 5) {
-
-		vector<int> uniqueHolder;
-
-		for (int i = 0; i < cards.size(); i++) {
-			if (find(uniqueHolder.begin(), uniqueHolder.end(), diamsCards[i]) != uniqueHolder.end()) {
-				continue;
-			}
-			else {
-				uniqueHolder.push_back(cards[i]);
-			}
-		}
-
-		for (int i = 0; i < 5; i++) {
-			for (int j = 0; j < uniqueHolder.size(); j++) {
-				if (royal[i] == uniqueHolder[j]) {
-					resultCounter += 1;
-					break;
-				}
-			}
-		}
-
+		royalFlushVerifier(royal, resultCounter, cards, diamsCards);
 	}
 	else if (club >= 5) {
-
-		vector<int> uniqueHolder;
-
-		for (int i = 0; i < cards.size(); i++) {
-			if (find(uniqueHolder.begin(), uniqueHolder.end(), clubCards[i]) != uniqueHolder.end()) {
-				continue;
-			}
-			else {
-				uniqueHolder.push_back(cards[i]);
-			}
-		}
-
-		for (int i = 0; i < 5; i++) {
-			for (int j = 0; j < uniqueHolder.size(); j++) {
-				if (royal[i] == uniqueHolder[j]) {
-					resultCounter += 1;
-					break;
-				}
-			}
-		}
-
+		royalFlushVerifier(royal, resultCounter, cards, clubCards);
 	}
 
 	if (resultCounter >= 5)
 		return true;
 	else
 		return false;
+}
+
+void Search::royalFlushVerifier(int royal[5], int& resultCounter, vector<int> cards, vector<int> colorCards) {
+	vector<int> uniqueHolder;
+
+	for (int i = 0; i < cards.size(); i++) {
+		if (find(uniqueHolder.begin(), uniqueHolder.end(), colorCards[i]) != uniqueHolder.end()) {
+			continue;
+		}
+		else {
+			uniqueHolder.push_back(cards[i]);
+		}
+	}
+
+	for (int i = 0; i < 5; i++) {
+		for (int j = 0; j < uniqueHolder.size(); j++) {
+			if (royal[i] == uniqueHolder[j]) {
+				resultCounter += 1;
+				break;
+			}
+		}
+	}
 }

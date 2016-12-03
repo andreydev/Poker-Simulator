@@ -34,6 +34,9 @@ using namespace std;
 
 class Search
 {
+private:
+	bool straigthFlushVerifier(vector<int> cards, vector<int> colorCards);
+	void Search::royalFlushVerifier(int royal[5], int& resultCounter, vector<int> cards, vector<int> colorCards);
 
 public:
 	// TODO: This should return a struct instead of using so many methods
