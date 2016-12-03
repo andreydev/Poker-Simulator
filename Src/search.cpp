@@ -295,7 +295,7 @@ void Search::royalFlushVerifier(int royal[5], int& resultCounter, vector<int> ca
 
 void Search::colorCounter(vector<int> cards, vector<int> colors, Colors& colorsFound, ColorCards& cardsFound) {
 
-	for (int i = 0; i < colors.size(); i++) {
+	for (auto i = 0; i < colors.size(); i++) {
 
 		switch (colors[i]) {
 		case 0:
