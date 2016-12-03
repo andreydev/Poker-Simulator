@@ -38,7 +38,7 @@ void GameMech::verifyResult(vector<Card> cardResults) {
 	vector<int> colors;
 	vector<int> cards;
 
-	for (int i = 0; i < cardResults.size(); i++) {
+	for (auto i = 0; i < cardResults.size(); i++) {
 		colors.push_back(cardResults.at(i).suit);
 		cards.push_back(cardResults.at(i).num);
 	}
@@ -92,7 +92,7 @@ void GameMech::vectorSearch(Score& myScore) {
 
 	map <Combo, int> results;
 
-	for (unsigned int i = 0; i < gameResults.size(); i++)
+	for (auto i = 0; i < gameResults.size(); i++)
 	{
 		results[gameResults[i]]++;
 	}

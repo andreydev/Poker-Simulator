@@ -35,16 +35,14 @@ using namespace std;
 
 class Generator
 {
-private:
 	vector<Card> deck;
 	vector<int> rollsResult;
 	vector<Card> playerCards;
 
 public:
-
 	Generator() {
 		time_t tm;
-		srand((unsigned)time(&tm));
+		srand(static_cast<unsigned>(time(&tm)));
 	}
 	void createDeck();
 	vector<Card> rollTable(int maxRandom, int numberOfCards);

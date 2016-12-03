@@ -27,22 +27,23 @@
  // TESTED
 bool Search::findPair(vector<int> cards) {
 
-	for (int i = 0; i < cards.size(); i++) {
+	for (auto i = 0; i < cards.size(); i++) {
 
 		if (i >= 1 && cards[i] == cards[i - 1]) {
 
 			return true;
 		}
 	}
+
 	return false;
 }
 
 // TESTED
 bool Search::findTwoPair(vector<int> cards) {
 
-	int firstPair = 0;
+	auto firstPair = 0;
 
-	for (int i = 0; i < cards.size(); i++) {
+	for (auto i = 0; i < cards.size(); i++) {
 
 		if (i >= 1 && cards[i] == cards[i - 1]) {
 
@@ -52,7 +53,7 @@ bool Search::findTwoPair(vector<int> cards) {
 		}
 	}
 
-	for (int i = 0; i < cards.size(); i++) {
+	for (auto i = 0; i < cards.size(); i++) {
 
 		if (i >= 1 && cards[i] != firstPair
 			&& cards[i] == cards[i - 1]) {
@@ -67,12 +68,13 @@ bool Search::findTwoPair(vector<int> cards) {
 // TESTED
 bool Search::findThree(vector<int> cards) {
 
-	for (int i = 0; i < cards.size(); i++) {
+	for (auto i = 0; i < cards.size(); i++) {
 		if (i >= 2 && cards[i] == cards[i - 1]
 			&& cards[i - 1] == cards[i - 2]) {
 			return true;
 		}
 	}
+
 	return false;
 }
 
@@ -81,7 +83,7 @@ bool Search::findStraight(vector<int> cards) {
 
 	vector<int> uniqueHolder;
 
-	for (int i = 0; i < cards.size(); i++) {
+	for (auto i = 0; i < cards.size(); i++) {
 		if (find(uniqueHolder.begin(), uniqueHolder.end(), cards[i]) != uniqueHolder.end()) {
 			continue;
 		}
@@ -99,18 +101,19 @@ bool Search::findStraight(vector<int> cards) {
 			return true;
 		}
 	}
+
 	return false;
 }
 
 // TESTED
 bool Search::findFlush(vector<int> colors) {
 
-	int spades = 0;
-	int hearts = 0;
-	int diams = 0;
-	int club = 0;
+	auto spades = 0;
+	auto hearts = 0;
+	auto diams = 0;
+	auto club = 0;
 
-	for (int i = 0; i < colors.size(); i++) {
+	for (auto i = 0; i < colors.size(); i++) {
 
 		switch (colors[i]) {
 		case 0:
@@ -139,12 +142,12 @@ bool Search::findFlush(vector<int> colors) {
 // TESTED
 bool Search::findFull(vector<int> cards) {
 
-	bool pairFound = false;
-	bool threeFound = false;
+	auto pairFound = false;
+	auto threeFound = false;
 
-	int threeNum = 0;
+	auto threeNum = 0;
 
-	for (int i = 0; i < cards.size(); i++) {
+	for (auto i = 0; i < cards.size(); i++) {
 		if (i >= 2 && cards[i] == cards[i - 1]
 			&& cards[i - 1] == cards[i - 2]) {
 			threeNum = cards[i];
@@ -153,7 +156,7 @@ bool Search::findFull(vector<int> cards) {
 		}
 	}
 
-	for (int i = 0; i < cards.size(); i++) {
+	for (auto i = 0; i < cards.size(); i++) {
 		if (i >= 1 && cards[i] != threeNum
 			&& cards[i] == cards[i - 1]) {
 			pairFound = true;
@@ -170,7 +173,7 @@ bool Search::findFull(vector<int> cards) {
 // TESTED
 bool Search::findFourKind(vector<int> cards) {
 
-	for (int i = 0; i < cards.size(); i++) {
+	for (auto i = 0; i < cards.size(); i++) {
 		if (i >= 3 && cards[i] == cards[i - 1]
 			&& cards[i - 1] == cards[i - 2]
 			&& cards[i - 2] == cards[i - 3]) {
@@ -218,7 +221,7 @@ bool Search::findRoyalFlush(vector<int> cards, vector<int> colors) {
 	Colors colorsFound;
 	ColorCards cardsFound;
 
-	int resultCounter = 0;
+	auto resultCounter = 0;
 
 	colorCounter(cards, colors, colorsFound, cardsFound);
 
@@ -242,6 +245,7 @@ bool Search::findRoyalFlush(vector<int> cards, vector<int> colors) {
 }
 
 bool Search::straigthFlushVerifier(vector<int> cards) {
+
 	vector<int> uniqueHolder;
 
 	for (auto item : cards) {
@@ -253,7 +257,7 @@ bool Search::straigthFlushVerifier(vector<int> cards) {
 		}
 	}
 
-	for (int i = 0; i < uniqueHolder.size(); i++) {
+	for (auto i = 0; i < uniqueHolder.size(); i++) {
 		if (i >= 4 &&
 			uniqueHolder[i] == uniqueHolder[i - 1] + 1 &&
 			uniqueHolder[i] == uniqueHolder[i - 2] + 2 &&
@@ -267,6 +271,7 @@ bool Search::straigthFlushVerifier(vector<int> cards) {
 }
 
 void Search::royalFlushVerifier(int royal[5], int& resultCounter, vector<int> cards) {
+
 	vector<int> uniqueHolder;
 
 	for (auto item : cards) {
@@ -278,8 +283,8 @@ void Search::royalFlushVerifier(int royal[5], int& resultCounter, vector<int> ca
 		}
 	}
 
-	for (int i = 0; i < 5; i++) {
-		for (int j = 0; j < uniqueHolder.size(); j++) {
+	for (auto i = 0; i < 5; i++) {
+		for (auto j = 0; j < uniqueHolder.size(); j++) {
 			if (royal[i] == uniqueHolder[j]) {
 				resultCounter += 1;
 				break;

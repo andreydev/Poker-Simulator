@@ -33,7 +33,7 @@ vector<Card> Generator::rollTable(int maxRandom, int numberOfCards) {
 
 	rollAgain:
 
-		int roll = rand() % maxRandom;
+		auto roll = rand() % maxRandom;
 
 		if (find(begin(rollsResult), end(rollsResult), roll) != end(rollsResult)) {
 			goto rollAgain;

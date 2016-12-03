@@ -57,12 +57,15 @@ GameMech game;
 vector<Card> resultCards;
 
 void crossSleep(float time) {
+
+	auto dTime = static_cast<DWORD>(time);
+
 #ifdef __linux__
-	usleep(time * 1000);
+	usleep(dTime * 1000);
 #elif __APPLE__
-	usleep(time * 1000);
+	usleep(dTime * 1000);
 #elif _WIN32
-	Sleep(time);
+	Sleep(dTime);
 #endif
 }
 
@@ -91,82 +94,61 @@ int main() {
 
 void displayResult() {
 	while (true) {
+
 		crossSleep(1000);
 
 		crossClear();
 
-		try {
+		game.vectorSearch(myScore);
 
-			game.vectorSearch(myScore);
+		auto tmpScore = myScore;
 
-			Score tmpScore = myScore;
+		auto nothingPrc = tmpScore.nothing / static_cast<float>(tmpScore.getTotal()) * 100;
+		auto pairsPrc = tmpScore.pair / static_cast<float>(tmpScore.getTotal()) * 100;
+		auto twoPairPrc = tmpScore.twopair / static_cast<float>(tmpScore.getTotal()) * 100;
+		auto threePrc = tmpScore.three / static_cast<float>(tmpScore.getTotal()) * 100;
+		auto straightPrc = tmpScore.straight / static_cast<float>(tmpScore.getTotal()) * 100;
+		auto flushPrc = tmpScore.flush / static_cast<float>(tmpScore.getTotal()) * 100;
+		auto fullPrc = tmpScore.full / static_cast<float>(tmpScore.getTotal()) * 100;
+		auto fourKindsPrc = tmpScore.four / static_cast<float>(tmpScore.getTotal()) * 100;
+		auto straightFlushPrc = tmpScore.straightflush / static_cast<float>(tmpScore.getTotal()) * 100;
+		auto royalFlushPrc = tmpScore.royal / static_cast<float>(tmpScore.getTotal()) * 100;
 
-			float nothingPrc = tmpScore.nothing / static_cast<float>(tmpScore.getTotal()) * 100;
-			float pairsPrc = tmpScore.pair / static_cast<float>(tmpScore.getTotal()) * 100;
-			float twoPairPrc = tmpScore.twopair / static_cast<float>(tmpScore.getTotal()) * 100;
-			float threePrc = tmpScore.three / static_cast<float>(tmpScore.getTotal()) * 100;
-			float straightPrc = tmpScore.straight / static_cast<float>(tmpScore.getTotal()) * 100;
-			float flushPrc = tmpScore.flush / static_cast<float>(tmpScore.getTotal()) * 100;
-			float fullPrc = tmpScore.full / static_cast<float>(tmpScore.getTotal()) * 100;
-			float fourKindsPrc = tmpScore.four / static_cast<float>(tmpScore.getTotal()) * 100;
-			float straightFlushPrc = tmpScore.straightflush / static_cast<float>(tmpScore.getTotal()) * 100;
-			float royalFlushPrc = tmpScore.royal / static_cast<float>(tmpScore.getTotal()) * 100;
+		auto total = nothingPrc + pairsPrc + twoPairPrc + threePrc + straightPrc + flushPrc + fullPrc + fourKindsPrc + straightFlushPrc + royalFlushPrc;
 
-			float total = nothingPrc + pairsPrc + twoPairPrc + threePrc + straightPrc + flushPrc + fullPrc + fourKindsPrc + straightFlushPrc + royalFlushPrc;
+		cout << "[?] Game #" << tmpScore.getTotal() << " Done ->" << setiosflags(ios::fixed) << setprecision(0) << total << "%" << endl;
+		cout << "[?] Nothing ->" << tmpScore.nothing << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << nothingPrc << "%" << endl;
+		cout << "[?] Pairs ->" << tmpScore.pair << " ->" << pairsPrc << "%" << endl;
+		cout << "[?] TwoPairs ->" << tmpScore.twopair << " ->" << twoPairPrc << "%" << endl;
+		cout << "[?] ThreeKinds ->" << tmpScore.three << " ->" << threePrc << "%" << endl;
+		cout << "[?] Straights ->" << tmpScore.straight << " ->" << straightPrc << "%" << endl;
+		cout << "[?] Flushes ->" << tmpScore.flush << " ->" << flushPrc << "%" << endl;
+		cout << "[?] Fulls ->" << tmpScore.full << " ->" << fullPrc << "%" << endl;
+		cout << "[?] FourKinds ->" << tmpScore.four << " ->" << fourKindsPrc << "%" << endl;
+		cout << "[?] StraightFlushes ->" << tmpScore.straightflush << " ->" << straightFlushPrc << "%" << endl;
+		cout << "[?] RoyalFlushes ->" << tmpScore.royal << " ->" << royalFlushPrc << "%" << endl;
 
-			cout << "[?] Game #" << tmpScore.getTotal() << " Done ->" << setiosflags(ios::fixed) << setprecision(0) << total << "%" << endl;
-			cout << "[?] Nothing ->" << tmpScore.nothing << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << nothingPrc << "%" << endl;
-			cout << "[?] Pairs ->" << tmpScore.pair << " ->" << pairsPrc << "%" << endl;
-			cout << "[?] TwoPairs ->" << tmpScore.twopair << " ->" << twoPairPrc << "%" << endl;
-			cout << "[?] ThreeKinds ->" << tmpScore.three << " ->" << threePrc << "%" << endl;
-			cout << "[?] Straights ->" << tmpScore.straight << " ->" << straightPrc << "%" << endl;
-			cout << "[?] Flushes ->" << tmpScore.flush << " ->" << flushPrc << "%" << endl;
-			cout << "[?] Fulls ->" << tmpScore.full << " ->" << fullPrc << "%" << endl;
-			cout << "[?] FourKinds ->" << tmpScore.four << " ->" << fourKindsPrc << "%" << endl;
-			cout << "[?] StraightFlushes ->" << tmpScore.straightflush << " ->" << straightFlushPrc << "%" << endl;
-			cout << "[?] RoyalFlushes ->" << tmpScore.royal << " ->" << royalFlushPrc << "%" << endl;
-
-			while (!done) {
-				crossSleep(0.01f);
-			}
-
-			game.clearGameResults();
+		while (!done) {
+			crossSleep(0.01f);
 		}
-		catch (const std::overflow_error& e) {
-			cout << e.what();
-		}
-		catch (const std::runtime_error& e) {
-			cout << e.what();
-		}
-		catch (const std::exception& e) {
-			cout << e.what();
-		}
+
+		game.clearGameResults();
 	}
 }
 
+
 void play() {
 	while (true) {
+
 		done = false;
 
-		try {
-			resultCards.clear();
+		resultCards.clear();
 
-			resultCards = generator.rollTable(maxRandom, numberOfCards);
+		resultCards = generator.rollTable(maxRandom, numberOfCards);
 
-			game.verifyResult(resultCards);
+		game.verifyResult(resultCards);
 
-			done = true;
-
-		}
-		catch (const std::overflow_error& e) {
-			cout << e.what();
-		}
-		catch (const std::runtime_error& e) {
-			cout << e.what();
-		}
-		catch (const std::exception& e) {
-			cout << e.what();
-		}
+		done = true;
 
 		crossSleep(0.1f);
 	}
