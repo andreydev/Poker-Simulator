@@ -117,7 +117,7 @@ void displayResult() {
 			cout << "[?] Game #" << tmpScore.getTotal() << " Done ->" << setiosflags(ios::fixed) << setprecision(0) << total << "%" << endl;
 			cout << "[?] Nothing ->" << tmpScore.nothing << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << nothingPrc << "%" << endl;
 			cout << "[?] Pairs ->" << tmpScore.pair << " ->" << pairsPrc << "%" << endl;
-			cout << "[?] TwoPairs ->" << tmpScore.twopair << " ->"  << twoPairPrc << "%" << endl;
+			cout << "[?] TwoPairs ->" << tmpScore.twopair << " ->" << twoPairPrc << "%" << endl;
 			cout << "[?] ThreeKinds ->" << tmpScore.three << " ->" << threePrc << "%" << endl;
 			cout << "[?] Straights ->" << tmpScore.straight << " ->" << straightPrc << "%" << endl;
 			cout << "[?] Flushes ->" << tmpScore.flush << " ->" << flushPrc << "%" << endl;
@@ -127,7 +127,7 @@ void displayResult() {
 			cout << "[?] RoyalFlushes ->" << tmpScore.royal << " ->" << royalFlushPrc << "%" << endl;
 
 			while (!done) {
-				crossSleep(0.01);
+				crossSleep(0.01f);
 			}
 
 			game.clearGameResults();
@@ -168,6 +168,6 @@ void play() {
 			cout << e.what();
 		}
 
-		crossSleep(0.1);
+		crossSleep(0.1f);
 	}
 }

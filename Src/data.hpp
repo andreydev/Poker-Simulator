@@ -30,14 +30,14 @@ SOFTWARE.
 
 using namespace std;
 
-struct Colors{
+struct Colors {
 	int spades = 0;
 	int hearts = 0;
 	int diams = 0;
 	int club = 0;
 };
 
-struct ColorCards{
+struct ColorCards {
 	vector<int> spadesCards;
 	vector<int> heartsCards;
 	vector<int> diamsCards;

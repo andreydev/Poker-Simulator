@@ -92,8 +92,9 @@ void GameMech::vectorSearch(Score& myScore) {
 
 	map <Combo, int> results;
 
-	for (auto item : gameResults) {
-		results[item]++;
+	for (unsigned int i = 0; i < gameResults.size(); i++)
+	{
+		results[gameResults[i]]++;
 	}
 
 	for (auto item : results) {

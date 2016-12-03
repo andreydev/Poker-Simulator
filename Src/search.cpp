@@ -184,25 +184,29 @@ bool Search::findFourKind(vector<int> cards) {
 bool Search::findStraightFlush(vector<int> cards, vector<int> colors) {
 
 	Colors colorsFound;
-	ColorCards colorCards;
+	ColorCards cardsFound;
 
-	colorCounter(cards, colors, colorsFound, colorCards);
+	colorCounter(cards, colors, colorsFound, cardsFound);
 
 	if (colorsFound.spades >= 5) {
-		if (straigthFlushVerifier(cards, colorCards.spadesCards))
+		if (straigthFlushVerifier(cardsFound.spadesCards)) {
 			return true;
+		}
 	}
 	else if (colorsFound.hearts >= 5) {
-		if (straigthFlushVerifier(cards, colorCards.heartsCards))
+		if (straigthFlushVerifier(cardsFound.heartsCards)) {
 			return true;
+		}
 	}
 	else if (colorsFound.diams >= 5) {
-		if (straigthFlushVerifier(cards, colorCards.diamsCards))
+		if (straigthFlushVerifier(cardsFound.diamsCards)) {
 			return true;
+		}
 	}
 	else if (colorsFound.club >= 5) {
-		if (straigthFlushVerifier(cards, colorCards.clubCards))
+		if (straigthFlushVerifier(cardsFound.clubCards)) {
 			return true;
+		}
 	}
 
 	return false;
@@ -212,25 +216,23 @@ bool Search::findStraightFlush(vector<int> cards, vector<int> colors) {
 bool Search::findRoyalFlush(vector<int> cards, vector<int> colors) {
 
 	Colors colorsFound;
-	ColorCards colorCards;
+	ColorCards cardsFound;
 
 	int resultCounter = 0;
 
-	colorCounter(cards, colors, colorsFound, colorCards);
-
-	int royal[5] = { 8,9,10,11,12 };
+	colorCounter(cards, colors, colorsFound, cardsFound);
 
 	if (colorsFound.spades >= 5) {
-		royalFlushVerifier(royal, resultCounter, cards, colorCards.spadesCards);
+		royalFlushVerifier(royal, resultCounter, cardsFound.spadesCards);
 	}
 	else if (colorsFound.hearts >= 5) {
-		royalFlushVerifier(royal, resultCounter, cards, colorCards.heartsCards);
+		royalFlushVerifier(royal, resultCounter, cardsFound.heartsCards);
 	}
 	else if (colorsFound.diams >= 5) {
-		royalFlushVerifier(royal, resultCounter, cards, colorCards.diamsCards);
+		royalFlushVerifier(royal, resultCounter, cardsFound.diamsCards);
 	}
 	else if (colorsFound.club >= 5) {
-		royalFlushVerifier(royal, resultCounter, cards, colorCards.clubCards);
+		royalFlushVerifier(royal, resultCounter, cardsFound.clubCards);
 	}
 
 	if (resultCounter >= 5)
@@ -239,15 +241,15 @@ bool Search::findRoyalFlush(vector<int> cards, vector<int> colors) {
 		return false;
 }
 
-bool Search::straigthFlushVerifier(vector<int> cards, vector<int> colorCards) {
+bool Search::straigthFlushVerifier(vector<int> cards) {
 	vector<int> uniqueHolder;
 
-	for (int i = 0; i < cards.size(); i++) {
-		if (find(uniqueHolder.begin(), uniqueHolder.end(), colorCards[i]) != uniqueHolder.end()) {
+	for (auto item : cards) {
+		if (find(begin(uniqueHolder), end(uniqueHolder), item) != end(uniqueHolder)) {
 			continue;
 		}
 		else {
-			uniqueHolder.push_back(cards[i]);
+			uniqueHolder.push_back(item);
 		}
 	}
 
@@ -260,17 +262,19 @@ bool Search::straigthFlushVerifier(vector<int> cards, vector<int> colorCards) {
 			return true;
 		}
 	}
+
+	return false;
 }
 
-void Search::royalFlushVerifier(int royal[5], int& resultCounter, vector<int> cards, vector<int> colorCards) {
+void Search::royalFlushVerifier(int royal[5], int& resultCounter, vector<int> cards) {
 	vector<int> uniqueHolder;
 
-	for (int i = 0; i < cards.size(); i++) {
-		if (find(uniqueHolder.begin(), uniqueHolder.end(), colorCards[i]) != uniqueHolder.end()) {
+	for (auto item : cards) {
+		if (find(begin(uniqueHolder), end(uniqueHolder), item) != end(uniqueHolder)) {
 			continue;
 		}
 		else {
-			uniqueHolder.push_back(cards[i]);
+			uniqueHolder.push_back(item);
 		}
 	}
 
@@ -284,26 +288,26 @@ void Search::royalFlushVerifier(int royal[5], int& resultCounter, vector<int> ca
 	}
 }
 
-void Search::colorCounter(vector<int> cards, vector<int> colors, Colors& colorsFound, ColorCards& colorCards) {
+void Search::colorCounter(vector<int> cards, vector<int> colors, Colors& colorsFound, ColorCards& cardsFound) {
 
 	for (int i = 0; i < colors.size(); i++) {
 
 		switch (colors[i]) {
 		case 0:
 			colorsFound.spades += 1;
-			colorCards.spadesCards.push_back(cards[i]);
+			cardsFound.spadesCards.push_back(cards[i]);
 			break;
 		case 1:
 			colorsFound.hearts += 1;
-			colorCards.heartsCards.push_back(cards[i]);
+			cardsFound.heartsCards.push_back(cards[i]);
 			break;
 		case 2:
 			colorsFound.diams += 1;
-			colorCards.diamsCards.push_back(cards[i]);
+			cardsFound.diamsCards.push_back(cards[i]);
 			break;
 		case 3:
 			colorsFound.club += 1;
-			colorCards.clubCards.push_back(cards[i]);
+			cardsFound.clubCards.push_back(cards[i]);
 			break;
 		default:
 			break;
