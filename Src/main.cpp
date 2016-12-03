@@ -96,41 +96,35 @@ void displayResult() {
 		crossClear();
 
 		try {
-			unsigned int nothing = game.vectorSearch(Combo::Nothing, myScore);
-			unsigned int pairs = game.vectorSearch(Combo::Pair, myScore);
-			unsigned int twopairs = game.vectorSearch(Combo::TwoPairs, myScore);
-			unsigned int three = game.vectorSearch(Combo::ThreeKind, myScore);
-			unsigned int straight = game.vectorSearch(Combo::Straight, myScore);
-			unsigned int flush = game.vectorSearch(Combo::Flush, myScore);
-			unsigned int full = game.vectorSearch(Combo::Full, myScore);
-			unsigned int fourkinds = game.vectorSearch(Combo::FourKind, myScore);
-			unsigned int straightflush = game.vectorSearch(Combo::StraightFlush, myScore);
-			unsigned int royalflush = game.vectorSearch(Combo::RoyalFlush, myScore);
 
-			float nothingPrc = nothing / static_cast<float>(myScore.getTotal()) * 100;
-			float pairsPrc = pairs / static_cast<float>(myScore.getTotal()) * 100;
-			float twoPairPrc = twopairs / static_cast<float>(myScore.getTotal()) * 100;
-			float threePrc = three / static_cast<float>(myScore.getTotal()) * 100;
-			float straightPrc = straight / static_cast<float>(myScore.getTotal()) * 100;
-			float flushPrc = flush / static_cast<float>(myScore.getTotal()) * 100;
-			float fullPrc = full / static_cast<float>(myScore.getTotal()) * 100;
-			float fourKindsPrc = fourkinds / static_cast<float>(myScore.getTotal()) * 100;
-			float straightFlushPrc = straightflush / static_cast<float>(myScore.getTotal()) * 100;
-			float royalFlushPrc = royalflush / static_cast<float>(myScore.getTotal()) * 100;
+			game.vectorSearch(myScore);
+
+			Score tmpScore = myScore;
+
+			float nothingPrc = tmpScore.nothing / static_cast<float>(tmpScore.getTotal()) * 100;
+			float pairsPrc = tmpScore.pair / static_cast<float>(tmpScore.getTotal()) * 100;
+			float twoPairPrc = tmpScore.twopair / static_cast<float>(tmpScore.getTotal()) * 100;
+			float threePrc = tmpScore.three / static_cast<float>(tmpScore.getTotal()) * 100;
+			float straightPrc = tmpScore.straight / static_cast<float>(tmpScore.getTotal()) * 100;
+			float flushPrc = tmpScore.flush / static_cast<float>(tmpScore.getTotal()) * 100;
+			float fullPrc = tmpScore.full / static_cast<float>(tmpScore.getTotal()) * 100;
+			float fourKindsPrc = tmpScore.four / static_cast<float>(tmpScore.getTotal()) * 100;
+			float straightFlushPrc = tmpScore.straightflush / static_cast<float>(tmpScore.getTotal()) * 100;
+			float royalFlushPrc = tmpScore.royal / static_cast<float>(tmpScore.getTotal()) * 100;
 
 			float total = nothingPrc + pairsPrc + twoPairPrc + threePrc + straightPrc + flushPrc + fullPrc + fourKindsPrc + straightFlushPrc + royalFlushPrc;
 
-			cout << "[?] Game #" << myScore.getTotal() << " Done ->" << setiosflags(ios::fixed) << setprecision(0) << total << "%" << endl;
-			cout << "[?] Nothing ->" << nothing << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << nothingPrc << "%" << endl;
-			cout << "[?] Pairs ->" << pairs << " ->" << pairsPrc << "%" << endl;
-			cout << "[?] TwoPairs ->" << twopairs << " ->"  << twoPairPrc << "%" << endl;
-			cout << "[?] ThreeKinds ->" << three << " ->" << threePrc << "%" << endl;
-			cout << "[?] Straights ->" << straight << " ->" << straightPrc << "%" << endl;
-			cout << "[?] Flushes ->" << flush << " ->" << flushPrc << "%" << endl;
-			cout << "[?] Fulls ->" << full << " ->" << fullPrc << "%" << endl;
-			cout << "[?] FourKinds ->" << fourkinds << " ->" << fourKindsPrc << "%" << endl;
-			cout << "[?] StraightFlushes ->" << straightflush << " ->" << straightFlushPrc << "%" << endl;
-			cout << "[?] RoyalFlushes ->" << royalflush << " ->" << royalFlushPrc << "%" << endl;
+			cout << "[?] Game #" << tmpScore.getTotal() << " Done ->" << setiosflags(ios::fixed) << setprecision(0) << total << "%" << endl;
+			cout << "[?] Nothing ->" << tmpScore.nothing << " ->" << setiosflags(ios::fixed) << setprecision(precPoint) << nothingPrc << "%" << endl;
+			cout << "[?] Pairs ->" << tmpScore.pair << " ->" << pairsPrc << "%" << endl;
+			cout << "[?] TwoPairs ->" << tmpScore.twopair << " ->"  << twoPairPrc << "%" << endl;
+			cout << "[?] ThreeKinds ->" << tmpScore.three << " ->" << threePrc << "%" << endl;
+			cout << "[?] Straights ->" << tmpScore.straight << " ->" << straightPrc << "%" << endl;
+			cout << "[?] Flushes ->" << tmpScore.flush << " ->" << flushPrc << "%" << endl;
+			cout << "[?] Fulls ->" << tmpScore.full << " ->" << fullPrc << "%" << endl;
+			cout << "[?] FourKinds ->" << tmpScore.four << " ->" << fourKindsPrc << "%" << endl;
+			cout << "[?] StraightFlushes ->" << tmpScore.straightflush << " ->" << straightFlushPrc << "%" << endl;
+			cout << "[?] RoyalFlushes ->" << tmpScore.royal << " ->" << royalFlushPrc << "%" << endl;
 
 			while (!done) {
 				crossSleep(0.01);

@@ -26,6 +26,7 @@
 #define gamemech_hpp
 
 #include <algorithm>
+#include <map>
 
 #include "data.hpp"
 #include "search.hpp"
@@ -42,7 +43,7 @@ public:
 	void clearGameResults();
 	vector<Combo> getGameResults();
 	void verifyResult(vector<Card>);
-	int vectorSearch(Combo target, Score& myScore);
+	void vectorSearch(Score& myScore);
 };
 
 #endif

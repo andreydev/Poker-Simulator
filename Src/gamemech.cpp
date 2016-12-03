@@ -32,6 +32,7 @@ vector<Combo> GameMech::getGameResults() {
 	return gameResults;
 }
 
+// Checking for combinations and saving to gameresults vector
 void GameMech::verifyResult(vector<Card> cardResults) {
 
 	vector<int> colors;
@@ -86,52 +87,47 @@ void GameMech::verifyResult(vector<Card> cardResults) {
 	}
 }
 
-int GameMech::vectorSearch(Combo target, Score& myScore) {
+// Parsing gameresults and adding to score
+void GameMech::vectorSearch(Score& myScore) {
 
-	unsigned int counter = 0;
+	map <Combo, int> results;
 
-	counter = count(begin(gameResults), end(gameResults), target);
+	for (auto item : gameResults) {
+		results[item]++;
+	}
 
-	switch (target) {
-	case Combo::Nothing:
-		myScore.nothing += counter;
-		return myScore.nothing;
-
-	case Combo::Pair:
-		myScore.pair += counter;
-		return myScore.pair;
-
-	case Combo::TwoPairs:
-		myScore.twopair += counter;
-		return myScore.twopair;
-
-	case Combo::ThreeKind:
-		myScore.three += counter;
-		return myScore.three;
-
-	case Combo::Flush:
-		myScore.flush += counter;
-		return myScore.flush;
-
-	case Combo::Full:
-		myScore.full += counter;
-		return myScore.full;
-
-	case Combo::StraightFlush:
-		myScore.straightflush += counter;
-		return myScore.straightflush;
-
-	case Combo::Straight:
-		myScore.straight += counter;
-		return myScore.straight;
-
-	case Combo::RoyalFlush:
-		myScore.royal += counter;
-		return myScore.royal;
-
-	case Combo::FourKind:
-		myScore.four += counter;
-		return myScore.four;
-
+	for (auto item : results) {
+		switch (item.first) {
+		case Combo::Nothing:
+			myScore.nothing += item.second;
+			break;
+		case Combo::Pair:
+			myScore.pair += item.second;
+			break;
+		case Combo::TwoPairs:
+			myScore.twopair += item.second;
+			break;
+		case Combo::ThreeKind:
+			myScore.three += item.second;
+			break;
+		case Combo::Straight:
+			myScore.straight += item.second;
+			break;
+		case Combo::Flush:
+			myScore.flush += item.second;
+			break;
+		case Combo::Full:
+			myScore.full += item.second;
+			break;
+		case Combo::FourKind:
+			myScore.four += item.second;
+			break;
+		case Combo::StraightFlush:
+			myScore.straightflush += item.second;
+			break;
+		case Combo::RoyalFlush:
+			myScore.royal += item.second;
+			break;
+		}
 	}
 }

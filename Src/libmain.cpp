@@ -49,19 +49,8 @@ extern "C" __declspec(dllexport)  void  __cdecl getResults(char* buf) {
 	resultCards = generator.rollTable(maxRandom, numberOfCards);
 
 	game.verifyResult(resultCards);
+	game.vectorSearch(myScore);
 
-	unsigned int nothing = game.vectorSearch(Combo::Nothing, myScore);
-	unsigned int pairs = game.vectorSearch(Combo::Pair, myScore);
-	unsigned int twopairs = game.vectorSearch(Combo::TwoPairs, myScore);
-	unsigned int three = game.vectorSearch(Combo::ThreeKind, myScore);
-	unsigned int straight = game.vectorSearch(Combo::Straight, myScore);
-	unsigned int flush = game.vectorSearch(Combo::Flush, myScore);
-	unsigned int full = game.vectorSearch(Combo::Full, myScore);
-	unsigned int fourkinds = game.vectorSearch(Combo::FourKind, myScore);
-	unsigned int straightflush = game.vectorSearch(Combo::StraightFlush, myScore);
-	unsigned int royalflush = game.vectorSearch(Combo::RoyalFlush, myScore);
-
-	Score returnSCore = myScore;
 	string result = myScore.returnString();
 
 	strcpy(buf, result.c_str());
