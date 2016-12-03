@@ -51,7 +51,7 @@ extern "C" __declspec(dllexport)  void  __cdecl getResults(char* buf) {
 	game.verifyResult(resultCards);
 	game.vectorSearch(myScore);
 
-	string result = myScore.returnString();
+	auto result = myScore.returnString();
 
 	strcpy(buf, result.c_str());
 }
