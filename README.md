@@ -1,4 +1,4 @@
-# Poker-Simulator
+# Poker Simulator
 
 Configured to generate pocket cards and flop, but can be changed to work with turn and river as well.
 
