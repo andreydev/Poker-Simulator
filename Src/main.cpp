@@ -22,16 +22,23 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+#define NIX 1
+#define WIN 2
+
 #ifdef __linux__
 #include <unistd.h>
+#define PLATFORM NIX
 #elif __APPLE__
 #include <unistd.h>
+#define PLATFORM NIX
 #elif _WIN32
 #include <windows.h>
+#define PLATFORM WIN
 #endif
 
 #include <iostream>
 #include <thread>
+#include <chrono>
 #include <vector>
 #include <iomanip>
 
@@ -56,25 +63,12 @@ GameMech game;
 
 vector<Card> resultCards;
 
-void crossSleep(float time) {
-
-	auto dTime = static_cast<DWORD>(time);
-
-#ifdef __linux__
-	usleep(dTime * 1000);
-#elif __APPLE__
-	usleep(dTime * 1000);
-#elif _WIN32
-	Sleep(dTime);
-#endif
-}
+thread displayThread;
 
 void crossClear() {
-#ifdef __linux__
+#if PLATFORM == NIX
 	system("clear");
-#elif __APPLE__
-	system("clear");
-#elif _WIN32
+#elif PLATFORM == WIN
 	system("CLS");
 #endif
 }
@@ -82,8 +76,8 @@ void crossClear() {
 int main() {
 	generator.createDeck();
 
-	thread t(displayResult);
-	t.detach();
+	displayThread = thread(displayResult);
+	displayThread.detach();
 
 	cout << "[^] Started with " << numberOfCards << " cards!" << endl;
 
@@ -95,9 +89,8 @@ int main() {
 void displayResult() {
 	while (true) {
 
-		crossSleep(1000);
-
 		crossClear();
+		
 
 		auto tmpScore = myScore;
 
@@ -126,9 +119,8 @@ void displayResult() {
 		cout << "[?] StraightFlushes ->" << tmpScore.straightflush << " ->" << straightFlushPrc << "%" << endl;
 		cout << "[?] RoyalFlushes ->" << tmpScore.royal << " ->" << royalFlushPrc << "%" << endl;
 
-		while (!done) {
-			crossSleep(0.01f);
-		}
+		this_thread::sleep_for(chrono::milliseconds(1000));
+
 	}
 }
 
@@ -136,16 +128,10 @@ void displayResult() {
 void play() {
 	while (true) {
 
-		done = false;
-
 		resultCards.clear();
 
 		resultCards = generator.rollTable(maxRandom, numberOfCards);
 
 		game.verifyResult(resultCards, myScore);
-
-		done = true;
-
-		crossSleep(0.1f);
 	}
 }
